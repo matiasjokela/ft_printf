@@ -14,7 +14,8 @@
 
 int main(void)
 {
-	int j = 2147483647;
+	int j = 15;
+	//char d = 'h';
 
-	printf("jeejee: %.5ld\n", j + j);
+	printf("jeejee: %8.5x\n", j);
 }
