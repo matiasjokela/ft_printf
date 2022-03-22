@@ -14,8 +14,10 @@
 
 int main(void)
 {
-	int j = 15;
+	float j = 0.015;
 	//char d = 'h';
 
-	printf("jeejee: %8.5x\n", j);
+	ft_printf("jeejee\n\n");
+
+	printf("jeejee:%.20f\n", j);
 }
