@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjokela <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/20 14:57:02 by mjokela           #+#    #+#             */
-/*   Updated: 2022/03/20 14:57:11 by mjokela          ###   ########.fr       */
+/*   Created: 2021/11/15 11:09:28 by mjokela           #+#    #+#             */
+/*   Updated: 2021/11/15 11:09:34 by mjokela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int main(void)
+void	ft_striter(char *s, void (*f)(char *))
 {
-	//float j = -0.015;
-	//char d = 'h';
+	int	i;
 
-	ft_printf("%d\n\n");
-
-	printf("%d\n\n", 5);
-	
-
+	i = 0;
+	if (s == NULL || f == NULL)
+		return ;
+	while (s[i] != '\0')
+	{
+		f(&s[i]);
+		i++;
+	}
 }

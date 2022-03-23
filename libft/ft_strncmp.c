@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjokela <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/20 14:57:02 by mjokela           #+#    #+#             */
-/*   Updated: 2022/03/20 14:57:11 by mjokela          ###   ########.fr       */
+/*   Created: 2021/11/08 12:13:48 by mjokela           #+#    #+#             */
+/*   Updated: 2021/11/08 12:14:02 by mjokela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int main(void)
+int	ft_strncmp(char const *s1, char const *s2, size_t n)
 {
-	//float j = -0.015;
-	//char d = 'h';
+	size_t	i;
 
-	ft_printf("%d\n\n");
-
-	printf("%d\n\n", 5);
-	
-
+	i = -1;
+	while (s1[++i] != '\0' && i < n)
+	{
+		if (s1[i] != s2[i])
+			break ;
+	}
+	if (i == n)
+		return (0);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjokela <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/20 14:57:02 by mjokela           #+#    #+#             */
-/*   Updated: 2022/03/20 14:57:11 by mjokela          ###   ########.fr       */
+/*   Created: 2021/11/18 10:51:22 by mjokela           #+#    #+#             */
+/*   Updated: 2021/11/18 10:51:26 by mjokela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int main(void)
+void	ft_putnbr(int n)
 {
-	//float j = -0.015;
-	//char d = 'h';
+	long int	i;
 
-	ft_printf("%d\n\n");
-
-	printf("%d\n\n", 5);
-	
-
+	i = n;
+	if (i < 0)
+	{
+		ft_putchar('-');
+		i *= -1;
+	}
+	if (i / 10 != 0)
+		ft_putnbr(i / 10);
+	ft_putchar(i % 10 + '0');
 }

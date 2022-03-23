@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjokela <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/20 14:57:02 by mjokela           #+#    #+#             */
-/*   Updated: 2022/03/20 14:57:11 by mjokela          ###   ########.fr       */
+/*   Created: 2021/11/08 16:15:24 by mjokela           #+#    #+#             */
+/*   Updated: 2021/11/08 16:15:31 by mjokela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int main(void)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	//float j = -0.015;
-	//char d = 'h';
+	size_t	i;
 
-	ft_printf("%d\n\n");
-
-	printf("%d\n\n", 5);
-	
-
+	i = 0;
+	if (dst == NULL || src == NULL)
+		return (dst);
+	while (i < n)
+	{
+		((char *)dst)[i] = ((char *)src)[i];
+		i++;
+	}
+	return (dst);
 }

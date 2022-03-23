@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjokela <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/20 14:57:02 by mjokela           #+#    #+#             */
-/*   Updated: 2022/03/20 14:57:11 by mjokela          ###   ########.fr       */
+/*   Created: 2021/11/03 15:27:33 by mjokela           #+#    #+#             */
+/*   Updated: 2021/11/03 15:27:39 by mjokela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int main(void)
+void	ft_putstr(char const *str)
 {
-	//float j = -0.015;
-	//char d = 'h';
-
-	ft_printf("%d\n\n");
-
-	printf("%d\n\n", 5);
-	
-
+	if (str == NULL)
+		return ;
+	write(1, str, ft_strlen(str));
 }

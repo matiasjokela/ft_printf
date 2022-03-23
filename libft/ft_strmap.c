@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjokela <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/20 14:57:02 by mjokela           #+#    #+#             */
-/*   Updated: 2022/03/20 14:57:11 by mjokela          ###   ########.fr       */
+/*   Created: 2021/11/15 11:10:23 by mjokela           #+#    #+#             */
+/*   Updated: 2021/11/15 11:10:28 by mjokela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int main(void)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	//float j = -0.015;
-	//char d = 'h';
+	int		i;
+	char	*ret;
 
-	ft_printf("%d\n\n");
-
-	printf("%d\n\n", 5);
-	
-
+	i = 0;
+	if (s == NULL)
+		return (NULL);
+	ret = (char *)malloc(ft_strlen(s) + 1);
+	if (ret == NULL)
+		return (NULL);
+	while (s[i] != '\0')
+	{
+		ret[i] = f(s[i]);
+		i++;
+	}
+	ret[i] = '\0';
+	return (ret);
 }

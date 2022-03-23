@@ -14,12 +14,37 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <unistd.h>
-# include <stdlib.h>
+# include "./libft/libft.h"
 # include <stdio.h>															//REMOVE
 
+# define FLAGS "#0- +"
+# define SPECIFIERS "#0-+ .*0123456789hlL"
+# define CONVERSION "cspdiouxXf"
 
-int	ft_printf(const char *format, ...);
+typedef struct s_data
+{
+	//flags
+	int		minus;
+	int		zero;
+	int		plus;
+	int		blank;
+	int		hash;
+	//width and precision
+	int		width;
+	int		precision;
+	//modifiers
+	int		mod_h;
+	int		mod_hh;
+	int		mod_l;
+	int		mod_ll;
+	int 	mod_L;
+	//conversion
+	char	conversion;
+}			t_data;
+
+int		ft_printf(const char *format, ...);
+void	convert(const char *format, int *i);
+int		isvalid(const char *format, int i);
 
 #endif
 

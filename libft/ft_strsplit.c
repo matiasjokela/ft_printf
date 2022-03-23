@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjokela <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/20 14:57:02 by mjokela           #+#    #+#             */
-/*   Updated: 2022/03/20 14:57:11 by mjokela          ###   ########.fr       */
+/*   Created: 2021/11/18 10:49:50 by mjokela           #+#    #+#             */
+/*   Updated: 2021/11/18 10:49:55 by mjokela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int main(void)
+char	**ft_strsplit(char const *s, char c)
 {
-	//float j = -0.015;
-	//char d = 'h';
+	char	**arr;
+	int		size;
 
-	ft_printf("%d\n\n");
-
-	printf("%d\n\n", 5);
-	
-
+	size = ft_count_delimited_words(s, c);
+	arr = (char **)malloc(sizeof(char *) * size + 1);
+	if (arr == NULL || s == NULL)
+		return (NULL);
+	arr[size] = NULL;
+	if (ft_fill_array(arr, s, c, size) == -1)
+		return (NULL);
+	return (arr);
 }

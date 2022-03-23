@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   memmove.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjokela <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/20 14:57:02 by mjokela           #+#    #+#             */
-/*   Updated: 2022/03/20 14:57:11 by mjokela          ###   ########.fr       */
+/*   Created: 2021/11/10 12:11:46 by mjokela           #+#    #+#             */
+/*   Updated: 2021/11/10 12:11:49 by mjokela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int main(void)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	//float j = -0.015;
-	//char d = 'h';
+	unsigned char	*buf;
 
-	ft_printf("%d\n\n");
-
-	printf("%d\n\n", 5);
-	
-
+	if (dst == NULL || src == NULL)
+		return (NULL);
+	buf = (unsigned char *)(malloc(sizeof(char) * len + 1));
+	if (buf == NULL)
+		return (NULL);
+	ft_memcpy((char *)buf, src, len);
+	ft_memcpy((char *)dst, (char const *)buf, len);
+	free(buf);
+	return (dst);
 }

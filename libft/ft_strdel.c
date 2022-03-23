@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjokela <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/20 14:57:02 by mjokela           #+#    #+#             */
-/*   Updated: 2022/03/20 14:57:11 by mjokela          ###   ########.fr       */
+/*   Created: 2021/11/15 11:08:39 by mjokela           #+#    #+#             */
+/*   Updated: 2021/11/15 11:08:44 by mjokela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int main(void)
+void	ft_strdel(char **as)
 {
-	//float j = -0.015;
-	//char d = 'h';
-
-	ft_printf("%d\n\n");
-
-	printf("%d\n\n", 5);
-	
-
+	if (as == NULL)
+		return ;
+	free(*as);
+	*as = NULL;
 }

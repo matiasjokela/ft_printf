@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjokela <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/20 14:57:02 by mjokela           #+#    #+#             */
-/*   Updated: 2022/03/20 14:57:11 by mjokela          ###   ########.fr       */
+/*   Created: 2021/11/15 11:58:32 by mjokela           #+#    #+#             */
+/*   Updated: 2021/11/15 11:58:34 by mjokela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int main(void)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	//float j = -0.015;
-	//char d = 'h';
+	char	*join;
 
-	ft_printf("%d\n\n");
-
-	printf("%d\n\n", 5);
-	
-
+	if (s1 == NULL && s2 == NULL)
+		return (NULL);
+	if (s1 == NULL && s2 != NULL)
+		return (ft_strdup(s2));
+	if (s1 != NULL && s2 == NULL)
+		return (ft_strdup(s1));
+	join = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (join == NULL)
+		return (NULL);
+	join = ft_strcpy(join, s1);
+	ft_strcat(join, s2);
+	return (join);
 }

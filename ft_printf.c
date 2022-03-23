@@ -24,11 +24,31 @@ int	ft_printf(const char *format, ...)
 		if (format[i] != '%')
 			write(1, &format[i], 1);
 		else
-			;
+		{
+			if (format[i + 1] == '%')
+				write(1, &format[i++], 1);
+			else
+				convert(format, &i);
+		}			
 		i++;
 	}
-
 	va_end(ap);
-
 	return 1;
+}
+
+void	convert(const char *format, int *i)
+{
+	if (!isvalid(format, *i))
+		return ;
+}
+
+int	isvalid(const char *format, int i)
+{
+	while (ft_strchr(CONVERSION, format[i]) == NULL)
+	{
+		if (ft_strchr(SPECIFIERS, format[i]) == NULL || format[i] == '\0')
+			return (0);
+		i++;
+	}
+	return (1);
 }

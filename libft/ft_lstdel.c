@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjokela <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/20 14:57:02 by mjokela           #+#    #+#             */
-/*   Updated: 2022/03/20 14:57:11 by mjokela          ###   ########.fr       */
+/*   Created: 2021/11/18 16:23:03 by mjokela           #+#    #+#             */
+/*   Updated: 2021/11/18 16:23:06 by mjokela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int main(void)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	//float j = -0.015;
-	//char d = 'h';
-
-	ft_printf("%d\n\n");
-
-	printf("%d\n\n", 5);
-	
-
+	if ((*alst)->next != NULL)
+		ft_lstdel(&((*alst)->next), del);
+	ft_lstdelone(alst, del);
 }
