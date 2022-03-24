@@ -47,6 +47,7 @@ void	convert(const char *format, int *i, t_data *data)
 	if (!isvalid(format, *i))
 		return ;
 	read_data(format, i, data);
+	
 }
 
 int	isvalid(const char *format, int i)
