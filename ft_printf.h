@@ -43,8 +43,14 @@ typedef struct s_data
 }			t_data;
 
 int		ft_printf(const char *format, ...);
-void	convert(const char *format, int *i);
+void	convert(const char *format, int *i, t_data *data);
 int		isvalid(const char *format, int i);
+void	clear_data(t_data *data);
+void	read_data(const char *format, int *i, t_data *data);
+void	read_flags(const char *format, int *i, t_data *data);
+void	read_dimensions(const char *format, int *i, t_data *data);
+void	read_modifiers(const char *format, int *i, t_data *data);
+void	print_data(t_data *data);												//REMOVE
 
 #endif
 

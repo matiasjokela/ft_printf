@@ -17,7 +17,8 @@ int main(void)
 	//float j = -0.015;
 	//char d = 'h';
 
-	ft_printf("%d\n\n");
+
+	ft_printf("%- #  0+15.26Llhd %  0-#42.21hhx\n\n");
 
 	printf("%d\n\n", 5);
 	
