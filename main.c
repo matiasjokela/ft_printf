@@ -18,9 +18,11 @@ int main(void)
 	//char d = 'h';
 
 
-	ft_printf("testi: %- #  0+15.26Ldjeejee:%  0-#42.21hhx loppu:\n\n");
+	ft_printf("testi: %i %d\n", 4, 2);
 
-	printf("%d\n\n", 5);
+	//printf("%8.10d\n", 50);
+	//printf("%.10f\n\n", 1 / 23.0);
+
 	
 
 }

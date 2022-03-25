@@ -32,7 +32,7 @@ int	ft_printf(const char *format, ...)
 			if (format[i + 1] == '%')
 				write(1, &format[i++], 1);
 			else
-				convert(format, &i, data);
+				convert(format, &i, data, ap);
 		}
 		i++;
 	}
@@ -40,13 +40,14 @@ int	ft_printf(const char *format, ...)
 	return 1;
 }
 
-void	convert(const char *format, int *i, t_data *data)
+void	convert(const char *format, int *i, t_data *data, va_list ap)
 {
 	clear_data(data);
 	*i += 1;
 	if (!isvalid(format, *i))
 		return ;
 	read_data(format, i, data);
+	print_conversion(data, ap);
 }
 
 int	isvalid(const char *format, int i)
@@ -60,6 +61,18 @@ int	isvalid(const char *format, int i)
 	return (1);
 }
 
+void	print_conversion(t_data *data, va_list ap)
+{
+
+	if (data->conversion == 'd' || data->conversion == 'i')
+	{
+		int arg;
+
+		arg = va_arg(ap, int);
+		ft_putnbr(arg);
+	}
+}
+
 void	clear_data(t_data *data)
 {
 	data->minus = 0;
@@ -68,7 +81,7 @@ void	clear_data(t_data *data)
 	data->blank = 0;
 	data->hash = 0;
 	data->width = 0;
-	data->precision = 0;
+	data->precision = -1;
 	data->mod_h = 0;
 	data->mod_hh = 0;
 	data->mod_l = 0;
