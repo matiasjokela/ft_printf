@@ -33,7 +33,7 @@ int	ft_printf(const char *format, ...)
 				write(1, &format[i++], 1);
 			else
 				convert(format, &i, data);
-		}			
+		}
 		i++;
 	}
 	va_end(ap);
@@ -47,7 +47,6 @@ void	convert(const char *format, int *i, t_data *data)
 	if (!isvalid(format, *i))
 		return ;
 	read_data(format, i, data);
-	
 }
 
 int	isvalid(const char *format, int i)

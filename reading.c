@@ -18,7 +18,7 @@ void	read_data(const char *format, int *i, t_data *data)
 	read_dimensions(format, i, data);
 	read_modifiers(format, i, data);
 	data->conversion = format[*i];
-	print_data(data);
+	//print_data(data);
 
 	
 }
