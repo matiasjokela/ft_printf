@@ -18,7 +18,8 @@ int main(void)
 	//char d = 'h';
 
 
-	ft_printf("testi: %i%d\n", 4, 2);
+	printf("return: %d\n", ft_printf("testi: %+i% +d\n", -4, 2));
+	printf("return: %d\n", printf("testi: %+i% +d\n", -4, 2));
 
 	//printf("%8.10d\n", 50);
 	//printf("%.10f\n\n", 1 / 23.0);

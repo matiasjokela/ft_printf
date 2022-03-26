@@ -1,1 +1,1 @@
-gcc -Wall -Wextra -Werror *.c -L./libft/ -lft && ./a.out
+gcc *.c -L./libft/ -lft && ./a.out

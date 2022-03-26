@@ -23,21 +23,33 @@ int	ft_printf(const char *format, ...)
 	data = (t_data*)malloc(sizeof(t_data));
 	if (data == NULL)
 		return (-1);
-	while (format[i] != '\0')
+	data->total_len = 0;
+	check_and_print(format, &i, data, ap);
+	va_end(ap);
+	return (data->total_len);
+}
+
+void	check_and_print(const char *format, int *i, t_data *data, va_list ap)
+{
+	while (format[*i] != '\0')
 	{
-		if (format[i] != '%')
-			write(1, &format[i], 1);
+		if (format[*i] != '%')
+			ft_putchar_pro(format[*i], data);
 		else
 		{
-			if (format[i + 1] == '%')
-				write(1, &format[i++], 1);
+			if (format[*i + 1] == '%')
+				ft_putchar_pro(format[*i++], data);
 			else
-				convert(format, &i, data, ap);
+				convert(format, i, data, ap);
 		}
-		i++;
+		*i += 1;
 	}
-	va_end(ap);
-	return 1;
+}
+
+void	ft_putchar_pro(char c, t_data *data)
+{
+	ft_putchar(c);
+	data->total_len++;
 }
 
 void	convert(const char *format, int *i, t_data *data, va_list ap)
@@ -65,12 +77,22 @@ void	print_conversion(t_data *data, va_list ap)
 {
 
 	if (data->conversion == 'd' || data->conversion == 'i')
-	{
-		int arg;
+		print_int(data, ap);
+}
 
-		arg = va_arg(ap, int);
-		ft_putnbr(arg);
-	}
+void	print_int(t_data *data, va_list ap)
+{
+	int arg;
+
+	arg = va_arg(ap, int);
+	if (data->plus == 1 && arg >= 0)
+		ft_putchar_pro('+', data);
+	else if (data->blank == 1)
+		ft_putchar_pro(' ', data);
+	data->total_len += ft_intlen(arg);
+	ft_putnbr(arg);
+
+
 }
 
 void	clear_data(t_data *data)
