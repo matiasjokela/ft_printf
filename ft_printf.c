@@ -75,21 +75,30 @@ int	isvalid(const char *format, int i)
 
 void	print_conversion(t_data *data, va_list ap)
 {
-
 	if (data->conversion == 'd' || data->conversion == 'i')
 		print_int(data, ap);
 }
 
 void	print_int(t_data *data, va_list ap)
 {
-	int arg;
+	int	arg;
+	int	len;
 
 	arg = va_arg(ap, int);
+	len = ft_intlen(arg);
+	while (data->width > len)
+	{
+		if (data->zero == 0 && data->precision == -1 && data->minus == 0)
+			ft_putchar_pro(' ', data);
+		else
+			ft_putchar_pro('0', data);
+		data->width--;
+	}
 	if (data->plus == 1 && arg >= 0)
 		ft_putchar_pro('+', data);
 	else if (data->blank == 1)
 		ft_putchar_pro(' ', data);
-	data->total_len += ft_intlen(arg);
+	data->total_len += len;
 	ft_putnbr(arg);
 
 
