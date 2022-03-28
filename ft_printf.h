@@ -53,10 +53,11 @@ void	read_flags(const char *format, int *i, t_data *data);
 void	read_dimensions(const char *format, int *i, t_data *data);
 void	read_modifiers(const char *format, int *i, t_data *data);
 void	print_data(t_data *data);												//REMOVE
-void	ft_putchar_pro(char c, t_data *data);
+void	ft_putchar_pro(char c, t_data *data, int i);
 void	check_and_print(const char *format, int *i, t_data *data, va_list ap);
 void	print_conversion(t_data *data, va_list ap);
-void	print_int(t_data *data, va_list ap);
+void	print_int(t_data *data, int arg);
+int		int_arg_len(t_data *data, int arg);
 
 
 #endif

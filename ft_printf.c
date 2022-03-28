@@ -34,11 +34,11 @@ void	check_and_print(const char *format, int *i, t_data *data, va_list ap)
 	while (format[*i] != '\0')
 	{
 		if (format[*i] != '%')
-			ft_putchar_pro(format[*i], data);
+			ft_putchar_pro(format[*i], data, 1);
 		else
 		{
 			if (format[*i + 1] == '%')
-				ft_putchar_pro(format[*i++], data);
+				ft_putchar_pro(format[*i++], data, 1);
 			else
 				convert(format, i, data, ap);
 		}
@@ -46,10 +46,14 @@ void	check_and_print(const char *format, int *i, t_data *data, va_list ap)
 	}
 }
 
-void	ft_putchar_pro(char c, t_data *data)
+void	ft_putchar_pro(char c, t_data *data, int i)
 {
-	ft_putchar(c);
-	data->total_len++;
+	while (i > 0)
+	{
+		ft_putchar(c);
+		data->total_len++;
+		i--;
+	}
 }
 
 void	convert(const char *format, int *i, t_data *data, va_list ap)
@@ -60,6 +64,7 @@ void	convert(const char *format, int *i, t_data *data, va_list ap)
 		return ;
 	read_data(format, i, data);
 	print_conversion(data, ap);
+	//print_data(data);
 }
 
 int	isvalid(const char *format, int i)
@@ -76,32 +81,69 @@ int	isvalid(const char *format, int i)
 void	print_conversion(t_data *data, va_list ap)
 {
 	if (data->conversion == 'd' || data->conversion == 'i')
-		print_int(data, ap);
+		print_int(data, va_arg(ap, int));
 }
 
-void	print_int(t_data *data, va_list ap)
+void	print_int(t_data *data, int arg)
 {
-	int	arg;
-	int	len;
+	int		len;
+	char	*print;
+	char	*itoa_string;
 
-	arg = va_arg(ap, int);
-	len = ft_intlen(arg);
-	while (data->width > len)
-	{
-		if (data->zero == 0 && data->precision == -1 && data->minus == 0)
-			ft_putchar_pro(' ', data);
-		else
-			ft_putchar_pro('0', data);
-		data->width--;
-	}
-	if (data->plus == 1 && arg >= 0)
-		ft_putchar_pro('+', data);
-	else if (data->blank == 1)
-		ft_putchar_pro(' ', data);
+	len = int_arg_len(data, arg);
+	print = (char *)malloc(sizeof(char) * (len + 1));
+	if (print == NULL)
+		exit(-1);
+	itoa_string = ft_itoa(arg);
 	data->total_len += len;
+	print[len--] = '\0';
+	while (len >= 0)
+		print[len--] = ' ';
+	ft_putstr(print);
+
+
+	/*
+	int	len;
+	int precision;
+	int padding;
+	
+	len = ft_intlen(arg);
+	data->total_len += len;
+	precision = data->precision - len;
+	if (data->plus == 1 && arg >= 0)
+		len++;
+	if (precision > 0)
+		padding = data->width - precision - len;
+	else
+		padding = data->width - len;
+	if (data->blank == 1)
+		ft_putchar_pro(' ', data, 1);
+	if (data->zero == 0 && data->minus == 0)
+		ft_putchar_pro(' ', data, padding);
+	if (data->zero == 1 && data->minus == 0)
+		ft_putchar_pro('0', data, padding);
+	if (data->plus == 1 && arg >= 0)
+		ft_putchar_pro('+', data, 1);
+	ft_putchar_pro('0', data, precision);
 	ft_putnbr(arg);
+	if (data->zero == 0 && data->minus == 1)
+		ft_putchar_pro(' ', data, padding);
+	*/
+}
 
-
+int	int_arg_len(t_data *data, int arg)
+{
+	int	len;
+	len = ft_intlen(arg);
+	if (data->width > len)
+		len = data->width;
+	if (data->precision > len)
+		len = data->precision;
+	if (len == data->precision && arg < 0)
+		len++;
+	if ((arg >= 0 && data->plus == 1) || (arg >= 0 && data->blank == 1))
+		len++;
+	return (len);
 }
 
 void	clear_data(t_data *data)
