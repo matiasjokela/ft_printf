@@ -17,9 +17,8 @@ int main(void)
 	//float j = -0.015;
 	//char d = 'h';
 
-
-	printf("return: %d\n", ft_printf("%015.15i\n", -207));
-	printf("return: %d\n", printf("%015.15i\n", -207));
+	printf("return: %d\n", ft_printf("%+1.1i\n", -207));
+	printf("return: %d\n", printf("%+1.1i\n", -207));
 
 	//printf("%8.10d\n", 50);
 	//printf("%.10f\n\n", 1 / 23.0);

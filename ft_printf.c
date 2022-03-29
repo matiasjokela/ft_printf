@@ -89,16 +89,41 @@ void	print_int(t_data *data, int arg)
 	int		len;
 	char	*print;
 	char	*itoa_string;
+	int		i;
 
 	len = int_arg_len(data, arg);
 	print = (char *)malloc(sizeof(char) * (len + 1));
 	if (print == NULL)
 		exit(-1);
+	
 	itoa_string = ft_itoa(arg);
-	data->total_len += len;
-	print[len--] = '\0';
-	while (len >= 0)
-		print[len--] = ' ';
+	i = len;
+	data->total_len += len--;
+	print[i--] = '\0';
+	while (i >= 0)
+		print[i--] = ' ';
+	i = ft_strlen(itoa_string) - 1;
+	if (data->minus == 0)
+	{
+		while (i >= 0 && itoa_string[i] != '-')
+			print[len--] = itoa_string[i--];
+		i = data->precision - ft_strlen(itoa_string);
+		while (i-- > 0)
+			print[len--] = '0';
+		if (arg < 0)
+		{
+			print[len--] = '0';
+			print[len--] = '-';
+		}
+		else if (data->plus == 1)
+			print[len--] = '+';
+	}
+	else
+	{
+
+	}
+
+
 	ft_putstr(print);
 
 
@@ -141,8 +166,8 @@ int	int_arg_len(t_data *data, int arg)
 		len = data->precision;
 	if (len == data->precision && arg < 0)
 		len++;
-	if ((arg >= 0 && data->plus == 1) || (arg >= 0 && data->blank == 1))
-		len++;
+	/*if ((arg >= 0 && data->plus == 1) || (arg >= 0 && data->blank == 1))
+		len++;*/
 	return (len);
 }
 
