@@ -86,74 +86,68 @@ void	print_conversion(t_data *data, va_list ap)
 
 void	print_int(t_data *data, int arg)
 {
+
 	int		len;
 	char	*print;
 	char	*itoa_string;
 	int		i;
+	int		precision;
 
 	len = int_arg_len(data, arg);
-	print = (char *)malloc(sizeof(char) * (len + 1));
+	print = (char *)malloc(sizeof(char) * (len * 2));
+	if (data->zero == 1 && data->precision == -1 && data->minus == 0)
+		ft_memset(print, '0', len * 2);
+	else
+		ft_memset(print, ' ', len * 2);
+	if (data->blank == 1)
+		print[0] = ' ';
+	data->total_len += len;
 	if (print == NULL)
 		exit(-1);
-	
-	itoa_string = ft_itoa(arg);
-	i = len;
-	data->total_len += len--;
-	print[i--] = '\0';
-	while (i >= 0)
-		print[i--] = ' ';
-	i = ft_strlen(itoa_string) - 1;
+	i = arg;
+	if (arg < 0)
+		i *= -1;
+	itoa_string = ft_itoa(i);
+	i = ft_strlen(itoa_string);
+	precision = data->precision - i;
+	ft_memcpy(&print[len - i + 1], itoa_string, i);
+	if (precision > 0)
+	{
+		ft_memset(&print[len - i - precision + 1], '0', precision);
+		if (arg < 0)
+			print[len - i - precision] = '-';
+		else if (data->plus == 1)
+			print[len - i - precision] = '+';
+	}
+	else
+	{
+		if (arg < 0)
+			print[len - i] = '-';
+		else if (data->plus == 1)
+			print[len - i] = '+';
+	}
 	if (data->minus == 0)
 	{
-		while (i >= 0 && itoa_string[i] != '-')
-			print[len--] = itoa_string[i--];
-		i = data->precision - ft_strlen(itoa_string);
-		while (i-- > 0)
-			print[len--] = '0';
-		if (arg < 0)
-		{
-			print[len--] = '0';
-			print[len--] = '-';
-		}
-		else if (data->plus == 1)
-			print[len--] = '+';
+		if (data->blank == 1 && arg >= 0 && print[1] != ' ')
+			write(1, print, len + 1);
+		else
+			write(1, &print[1], len);
 	}
 	else
 	{
-
+		i = 0;
+		while (print[i] == ' ')
+			i++;
+		if (data->plus == 0 && data->blank == 1 && arg >= 0)
+			write(1, &print[i - 1], len + 1);
+		else
+			write(1, &print[i], len);
 	}
+	free(print);
+	free(itoa_string);
 
 
-	ft_putstr(print);
 
-
-	/*
-	int	len;
-	int precision;
-	int padding;
-	
-	len = ft_intlen(arg);
-	data->total_len += len;
-	precision = data->precision - len;
-	if (data->plus == 1 && arg >= 0)
-		len++;
-	if (precision > 0)
-		padding = data->width - precision - len;
-	else
-		padding = data->width - len;
-	if (data->blank == 1)
-		ft_putchar_pro(' ', data, 1);
-	if (data->zero == 0 && data->minus == 0)
-		ft_putchar_pro(' ', data, padding);
-	if (data->zero == 1 && data->minus == 0)
-		ft_putchar_pro('0', data, padding);
-	if (data->plus == 1 && arg >= 0)
-		ft_putchar_pro('+', data, 1);
-	ft_putchar_pro('0', data, precision);
-	ft_putnbr(arg);
-	if (data->zero == 0 && data->minus == 1)
-		ft_putchar_pro(' ', data, padding);
-	*/
 }
 
 int	int_arg_len(t_data *data, int arg)

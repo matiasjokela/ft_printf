@@ -47,17 +47,17 @@ void	read_flags(const char *format, int *i, t_data *data)
 
 void	read_dimensions(const char *format, int *i, t_data *data)
 {
-	if (format[*i] > '0' && format[*i] <= '9')
+	if (format[*i] >='0' && format[*i] <= '9')
 	{
 		data->width = ft_atoi(&format[*i]);
-		while (format[*i] > '0' && format[*i] <= '9')
+		while (format[*i] >= '0' && format[*i] <= '9')
 			*i += 1;
 	}
 	if (format[*i] == '.')
 	{
 		*i += 1;
 		data->precision = ft_atoi(&format[*i]);
-		while (format[*i] > '0' && format[*i] <= '9')
+		while (format[*i] >= '0' && format[*i] <= '9')
 			*i += 1;
 	}
 }

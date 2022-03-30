@@ -14,17 +14,24 @@
 
 int main(void)
 {
-	//float j = -0.015;
-	//char d = 'h';
 
-	printf("return: %d\n", ft_printf("%+1.1i\n", -207));
-	printf("return: %d\n", printf("%+1.1i\n", -207));
+
+
+	/*printf("return: %d\n", ft_printf("%+8.3i\n", 207));
+	printf("return: %d\n", printf("%+8.3i\n", 207));
+	printf("\n");
+	printf("return: %d\n", ft_printf("%05i\n", 207));
+	printf("return: %d\n", printf("%05i\n", 207));
+	printf("\n");	
+	printf("return: %d\n", ft_printf("% i\n", 207));
+	printf("return: %d\n", printf("% i\n", 207));
+	printf("\n");	*/
 
 	//printf("%8.10d\n", 50);
 	//printf("%.10f\n\n", 1 / 23.0);
 
 /*PYRYN TESTIT*/
-/*
+
 	int a = 207;
 	int b = -207;
 	short h = 207;
@@ -286,6 +293,6 @@ int main(void)
 	ft_putendl("\nInput: %-0d");
 	ft_printf("My ft_printf: %-0d $\n", a);
 	//printf("Real  printf: %-0d $\n", 0);
-	*/
+
 
 }
