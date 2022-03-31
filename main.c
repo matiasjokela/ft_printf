@@ -17,15 +17,8 @@ int main(void)
 
 
 
-	/*printf("return: %d\n", ft_printf("%+8.3i\n", 207));
-	printf("return: %d\n", printf("%+8.3i\n", 207));
-	printf("\n");
-	printf("return: %d\n", ft_printf("%05i\n", 207));
-	printf("return: %d\n", printf("%05i\n", 207));
-	printf("\n");	
-	printf("return: %d\n", ft_printf("% i\n", 207));
-	printf("return: %d\n", printf("% i\n", 207));
-	printf("\n");	*/
+	//printf("return: %d\n", ft_printf("% 3.3d\n", 7));
+	//printf("return: %d\n", printf("% 3.3d\n", 7));
 
 	//printf("%8.10d\n", 50);
 	//printf("%.10f\n\n", 1 / 23.0);

@@ -86,7 +86,101 @@ void	print_conversion(t_data *data, va_list ap)
 
 void	print_int(t_data *data, int arg)
 {
+int		len;
+char	*print;
+char	*itoa_string;
+int		i;
+int		precision;
 
+if (arg < 0)
+{
+	data->blank = 0;
+	data->plus = 0;
+	itoa_string = ft_itoa(arg * -1);
+}
+else
+	itoa_string = ft_itoa(arg);
+len = int_arg_len(data, arg);
+if ((data->blank == 1 || data->plus == 1) && (len == ft_intlen(arg)\
+	|| len == data->precision))
+	len++;
+data->total_len += len;
+print = (char *)malloc(sizeof(char) * (len * 2));
+if (print == NULL)
+	exit(-1);
+i = ft_strlen(itoa_string);
+precision = data->precision - i;
+if (data->zero == 1)
+	ft_memset(print, '0', len * 2);
+else
+	ft_memset(print, ' ', len * 2);
+ft_memcpy(&print[len - i], itoa_string, i);
+if (precision > 0)
+	ft_memset(&print[len - i - precision], '0', precision);
+if (data->zero == 1)
+{
+	if (arg < 0)
+		print[0] = '-';
+	else if (data->plus == 1)
+		print[0] = '+';
+	else if (data->blank == 1)
+		print[0] = ' ';
+	write(1, print, len);
+}
+else
+{
+	i = 0;
+	while (print[i] == ' ')
+		i++;
+	if (arg < 0)
+		print[--i] = '-';
+	else if (data->plus == 1)
+		print[--i] = '+';
+	else if (data->blank == 1)
+		print[--i] = ' ';
+	if (data->minus == 1)
+		write(1, &print[i], len);
+	else
+		write(1, print, len);
+}
+
+/*
+if (precision > 0)
+{
+	ft_memset(&print[len - i - precision], '0', precision);
+	if (arg < 0)
+		print[len - i - precision] = '-';
+	else if (data->plus == 1)
+		print[len - i - precision] = '+';
+}
+else
+{
+	if (arg < 0)
+		print[len - i] = '-';
+	else if (data->plus == 1)
+		print[len - i] = '+';
+}
+if (data->minus == 0)
+{
+	if (data->blank == 1 && arg >= 0 && print[1] != ' ')
+		write(1, print, len + 1);
+	else
+		write(1, &print[1], len);
+}
+else
+{
+	i = 0;
+	while (print[i] == ' ')
+		i++;
+	if (data->plus == 0 && data->blank == 1 && arg >= 0)
+		write(1, &print[i - 1], len + 1);
+	else
+		write(1, &print[i], len);
+}
+*/
+free(print);
+free(itoa_string);
+/*
 	int		len;
 	char	*print;
 	char	*itoa_string;
@@ -146,7 +240,7 @@ void	print_int(t_data *data, int arg)
 	free(print);
 	free(itoa_string);
 
-
+*/
 
 }
 
