@@ -22,10 +22,8 @@ void	read_data(const char *format, int *i, t_data *data)
 		data->zero = 0;
 	if (data->plus == 1)
 		data->blank = 0;
-	//print_data(data);
-
-	
 }
+
 void	read_flags(const char *format, int *i, t_data *data)
 {
 	char	c;
@@ -51,7 +49,7 @@ void	read_flags(const char *format, int *i, t_data *data)
 
 void	read_dimensions(const char *format, int *i, t_data *data)
 {
-	if (format[*i] >='0' && format[*i] <= '9')
+	if (format[*i] >= '0' && format[*i] <= '9')
 	{
 		data->width = ft_atoi(&format[*i]);
 		while (format[*i] >= '0' && format[*i] <= '9')
@@ -80,7 +78,6 @@ void	read_modifiers(const char *format, int *i, t_data *data)
 		data->mod_L = 1;
 	while (ft_strchr(CONVERSION, format[*i]) == NULL && format[*i] != '\0')
 		*i += 1;
-	
 }
 
 void	print_data(t_data *data)

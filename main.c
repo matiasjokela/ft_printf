@@ -20,11 +20,11 @@ int main(void)
 	//printf("return: %d\n", ft_printf("% 3.3d\n", 7));
 	//printf("return: %d\n", printf("% 3.3d\n", 7));
 
-	//printf("%8.10d\n", 50);
-	//printf("%.10f\n\n", 1 / 23.0);
+	printf("%08.10%\n");
+	printf("%%\n\n");
 
 /*PYRYN TESTIT*/
-
+/*
 	int a = 207;
 	int b = -207;
 	short h = 207;
@@ -287,5 +287,5 @@ int main(void)
 	ft_printf("My ft_printf: %-0d $\n", a);
 	//printf("Real  printf: %-0d $\n", 0);
 
-
+*/
 }
