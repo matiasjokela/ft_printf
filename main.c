@@ -25,7 +25,14 @@ int main(void)
 	printf("% %\n");
 	printf("%+%\n");
 	printf("%0.5%\n");
-	printf("%+05.9%\n");	
+	printf("%+5.9%\n");
+	printf("---\n");
+	ft_printf("%-%\n");
+	ft_printf("%0%\n");
+	ft_printf("% %\n");
+	ft_printf("%+%\n");
+	ft_printf("%0.5%\n");
+	ft_printf("%+5.9%\n");
 
 /*PYRYN TESTIT*/
 /*

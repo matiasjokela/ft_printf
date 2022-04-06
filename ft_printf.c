@@ -36,12 +36,7 @@ void	check_and_print(const char *form, int *i, t_data *data, va_list ap)
 		if (form[*i] != '%')
 			ft_putchar_pro(form[*i], data, 1);
 		else
-		{
-			if (form[*i + 1] == '%')								// Doesn't work like this, needs fixing
-				ft_putchar_pro(form[*i++], data, 1);
-			else
-				convert(form, i, data, ap);
-		}
+			convert(form, i, data, ap);
 		*i += 1;
 	}
 }
@@ -69,7 +64,9 @@ int	isvalid(const char *format, int i)
 
 void	print_conversion(t_data *data, va_list ap)
 {
-	if (data->conversion == 'd' || data->conversion == 'i')
+	if (data->conversion == '%')
+		print_modulo(data);
+	else if (data->conversion == 'd' || data->conversion == 'i')
 	{
 		if (data->mod_h == 1)
 			data->signed_mod = (short)va_arg(ap, int);
@@ -83,6 +80,20 @@ void	print_conversion(t_data *data, va_list ap)
 			data->signed_mod = (int)va_arg(ap, int);
 		print_int(data, data->signed_mod);
 	}
+}
+
+void	print_modulo(t_data *data)
+{
+	int len;
+
+	len = 1;
+	if (data->width > 0)
+		len = data->width;
+	if (data->zero == 1)
+		ft_putchar_pro('0', data, len - 1);
+	else
+		ft_putchar_pro(' ', data, len - 1);
+	ft_putchar_pro('%', data, 1);
 }
 
 void	print_int(t_data *data, long long arg)

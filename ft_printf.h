@@ -19,7 +19,7 @@
 
 # define FLAGS "#0- +"
 # define SPECIFIERS "#0-+ .*0123456789hlL"
-# define CONVERSION "cspdiouxXf"
+# define CONVERSION "cspdiouxXf%"
 
 typedef struct s_data
 {
@@ -65,6 +65,7 @@ long long	ft_longlen(long long n);
 char		*ft_ltoa(long long n);
 void		set_padding(t_data *data, char *print, char *num_str, int len);
 void		write_print(t_data *data, char *print, int len, int arg);
+void		print_modulo(t_data *data);
 
 
 #endif
