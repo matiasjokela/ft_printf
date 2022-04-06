@@ -29,18 +29,18 @@ int	ft_printf(const char *format, ...)
 	return (data->total_len);
 }
 
-void	check_and_print(const char *format, int *i, t_data *data, va_list ap)
+void	check_and_print(const char *form, int *i, t_data *data, va_list ap)
 {
-	while (format[*i] != '\0')
+	while (form[*i] != '\0')
 	{
-		if (format[*i] != '%')
-			ft_putchar_pro(format[*i], data, 1);
+		if (form[*i] != '%')
+			ft_putchar_pro(form[*i], data, 1);
 		else
 		{
-			if (format[*i + 1] == '%')								// Doesn't work like this, needs fixing
-				ft_putchar_pro(format[*i++], data, 1);
+			if (form[*i + 1] == '%')								// Doesn't work like this, needs fixing
+				ft_putchar_pro(form[*i++], data, 1);
 			else
-				convert(format, i, data, ap);
+				convert(form, i, data, ap);
 		}
 		*i += 1;
 	}
@@ -90,8 +90,6 @@ void	print_int(t_data *data, long long arg)
 	long long	len;
 	char		*print;
 	char		*itoa_string;
-	int			i;
-	int			precision;
 
 	if (arg < 0)
 	{
@@ -109,18 +107,33 @@ void	print_int(t_data *data, long long arg)
 	print = (char *)malloc(sizeof(char) * (len * 2));
 	if (print == NULL)
 		exit(-1);
-	i = ft_strlen(itoa_string);
+	set_padding(data, print, itoa_string, len);
+	write_print(data, print, len, 0);
+	free(print);
+	free(itoa_string);
+}
+
+void	set_padding(t_data *data, char *print, char *num_str, int len)
+{
+	int	i;
+	int	precision;
+
+	i = ft_strlen(num_str);
 	precision = data->precision - i;
 	if (data->zero == 1)
 		ft_memset(print, '0', len * 2);
 	else
 		ft_memset(print, ' ', len * 2);
-	ft_memcpy(&print[len - i], itoa_string, i);
+	ft_memcpy(&print[len - i], num_str, i);
 	if (precision > 0)
 		ft_memset(&print[len - i - precision], '0', precision);
+}
+
+void	write_print(t_data *data, char *print, int len, int i)
+{
 	if (data->zero == 1)
 	{
-		if (arg < 0)
+		if (data->signed_mod < 0)
 			print[0] = '-';
 		else if (data->plus == 1)
 			print[0] = '+';
@@ -130,10 +143,9 @@ void	print_int(t_data *data, long long arg)
 	}
 	else
 	{
-		i = 0;
 		while (print[i] == ' ')
 			i++;
-		if (arg < 0)
+		if (data->signed_mod < 0)
 			print[--i] = '-';
 		else if (data->plus == 1)
 			print[--i] = '+';
@@ -144,6 +156,4 @@ void	print_int(t_data *data, long long arg)
 		else
 			write(1, print, len);
 	}
-	free(print);
-	free(itoa_string);
 }

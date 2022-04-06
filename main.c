@@ -20,8 +20,12 @@ int main(void)
 	//printf("return: %d\n", ft_printf("% 3.3d\n", 7));
 	//printf("return: %d\n", printf("% 3.3d\n", 7));
 
-	printf("%08.10%\n");
-	printf("%%\n\n");
+	printf("%-%\n");
+	printf("%0%\n");
+	printf("% %\n");
+	printf("%+%\n");
+	printf("%0.5%\n");
+	printf("%+05.9%\n");	
 
 /*PYRYN TESTIT*/
 /*
