@@ -20,6 +20,7 @@ int main(void)
 	ft_printf("%.d %.0d$\n", 0, 0);
 	printf("%ld$\n", -9223372036854775807 - 1);
 	ft_printf("%lld$\n", -9223372036854775807 - 1);
+	
 
 /*
 	int a = 207;
