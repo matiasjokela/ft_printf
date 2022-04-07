@@ -89,6 +89,12 @@ void	print_modulo(t_data *data)
 	len = 1;
 	if (data->width > 0)
 		len = data->width;
+	if (data->minus == 1)
+	{
+		ft_putchar_pro('%', data, 1);
+		ft_putchar_pro(' ', data, len - 1);
+		return ;
+	}
 	if (data->zero == 1)
 		ft_putchar_pro('0', data, len - 1);
 	else
