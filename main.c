@@ -14,96 +14,13 @@
 
 int main(void)
 {
+	printf("%5.d %5.0d$\n", 0, 0);
+	ft_printf("%5.d %5.0d$\n", 5, 5);
+	printf("%.d %.0d$\n", 0, 0);
+	ft_printf("%.d %.0d$\n", 0, 0);
+	printf("%ld$\n", -9223372036854775807 - 1);
+	ft_printf("%lld$\n", -9223372036854775807 - 1);
 
-
-
-	//printf("return: %d\n", ft_printf("% 3.3d\n", 7));
-	//printf("return: %d\n", printf("% 3.3d\n", 7));
-
-/*
-
-	printf("%-05% $\n", 0);
-	printf("%0%\n");
-	printf("% %\n");
-	printf("%+%\n");
-	printf("%0.5%\n");
-	printf("%+5.9%\n");
-	printf("---\n");
-	ft_printf("%-05% $\n", 0);
-	ft_printf("%0%\n");
-	ft_printf("% %\n");
-	ft_printf("%+%\n");
-	ft_printf("%0.5%\n");
-	ft_printf("%+5.9%\n");
-*/
-
-	int real_return;
-	int my_return;
-
-
-	ft_putendl("\n\n * * * * * * * * * * MODULO CHARACTER:  * * * * * * * * * *\n");
-
-	ft_putendl("\nInput: %%");
-	my_return = ft_printf("My ft_printf: %% $\n");
-	real_return = printf("Real  printf: %% $\n");
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-
-	ft_putendl("\nInput: %.5%");
-	my_return = ft_printf("My ft_printf: %.5% $\n");
-	real_return = printf("Real  printf: %.5% $\n");
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-
-	ft_putendl("\nInput: %7.5%");
-	my_return = ft_printf("My ft_printf: %7.5% $\n");
-	real_return = printf("Real  printf: %7.5% $\n");
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-
-	ft_putendl("\nInput: %5%");
-	my_return = ft_printf("My ft_printf: %5% $\n");
-	real_return = printf("Real  printf: %5% $\n");
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-
-	ft_putendl("\nInput: %-5%");
-	my_return = ft_printf("My ft_printf: %-5% $\n");
-	real_return = printf("Real  printf: %-5% $\n");
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-
-	ft_putendl("\nInput: %.0%");
-	my_return = ft_printf("My ft_printf: %.0% $\n");
-	real_return = printf("Real  printf: %.0% $\n");
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-
-	ft_putendl("\nInput: %%, 'test'");
-	my_return = ft_printf("My ft_printf: %% $\n", "test");
-	real_return = printf("Real  printf: %% $\n", "test");
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-
-	ft_putendl("\nInput: %   %, 'test'");
-	my_return = ft_printf("My ft_printf: %   % $\n", "test");
-	real_return = printf("Real  printf: %   % $\n", "test");
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-
-	ft_putendl("\nInput: %05%");
-	my_return = ft_printf("My ft_printf: %05% $\n", 0);
-	real_return = printf("Real  printf: %05% $\n", 0);
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-
-	ft_putendl("\nInput: %-05%");
-	my_return = ft_printf("My ft_printf: %-05% $\n", 0);
-	real_return = printf("Real  printf: %-05% $\n", 0);
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-
-/*PYRYN TESTIT*/
 /*
 	int a = 207;
 	int b = -207;
@@ -114,12 +31,20 @@ int main(void)
 	int real_return;
 	int my_return;
 	int max = 2147483647;
+	long min_long = -2147483647 - 1;
+	long long min_long_long = -9223372036854775807 - 1;
 
-	ft_putendl(" * * * * * * * * * * SIGNED DESIMAL - Conversion di:  * * * * * * * * * *\n");
+	ft_putendl("\n\n * * * * * * * * * * SIGNED DESIMAL - Conversion di:  * * * * * * * * * *\n");
 
 	ft_putendl("Input: %d");
 	my_return = ft_printf("My ft_printf: %d $\n", a);
 	real_return = printf("Real  printf: %d $\n", a);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %03.2d");
+	my_return = ft_printf("My ft_printf: %03.2d $\n", -1);
+	real_return = printf("Real  printf: %03.2d $\n", -1);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
@@ -249,18 +174,42 @@ int main(void)
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	// MAX INT
-	ft_putendl("\n\n * * * * * Max int:  * * * * *");
+	// MAX AND MIN
+	ft_putendl("\n\n * * * * * Max and min:  * * * * *");
 
-	ft_putendl("\nInput: %d");
+	ft_putendl("\nInput: %d (max int)");
 	my_return = ft_printf("My ft_printf: %d $\n", max);
 	real_return = printf("Real  printf: %d $\n", max);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: % 8.4d");
+	ft_putendl("\nInput: % 8.4d (max int)");
 	my_return = ft_printf("My ft_printf: % 8.4d $\n", max);
 	real_return = printf("Real  printf: % 8.4d $\n", max);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %d (min int)");
+	my_return = ft_printf("My ft_printf: %d $\n", -2147483647 - 1);
+	real_return = printf("Real  printf: %d $\n", -2147483647 - 1);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %ld (min long)");
+	my_return = ft_printf("My ft_printf: %ld $\n", min_long);
+	real_return = printf("Real  printf: %ld $\n", min_long);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %lld (max long long)");
+	my_return = ft_printf("My ft_printf: %lld $\n", ll);
+	real_return = printf("Real  printf: %lld $\n", ll);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %lld (min long long)");
+	my_return = ft_printf("My ft_printf: %lld $\n", min_long_long);
+	real_return = printf("Real  printf: %lld $\n", min_long_long);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
@@ -345,6 +294,48 @@ int main(void)
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
+	ft_putendl("\nInput: %0+5d");
+	my_return = ft_printf("My ft_printf: %0+5d $\n", 42);
+	real_return = printf("Real  printf: %0+5d $\n", 42);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %05d");
+	my_return = ft_printf("My ft_printf: %05d $\n", -42);
+	real_return = printf("Real  printf: %05d $\n", -42);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %0+5d");
+	my_return = ft_printf("My ft_printf: %0+5d $\n", -42);
+	real_return = printf("Real  printf: %0+5d $\n", -42);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput:%5.d %5.0d");
+	my_return = ft_printf("My ft_printf: %5.d %5.0d $\n", 0, 0);
+	real_return = printf("Real  printf: %5.d %5.0d $\n", 0, 0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput:%.d %.0d");
+	my_return = ft_printf("My ft_printf: %.d %.0d $\n", 0, 0);
+	real_return = printf("Real  printf: %.d %.0d $\n", 0, 0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: % 03d");
+	my_return = ft_printf("My ft_printf: % 03d $\n", 0);
+	real_return = printf("Real  printf: % 03d $\n", 0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %+03d");
+	my_return = ft_printf("My ft_printf: %+03d $\n", 0);
+	real_return = printf("Real  printf: %+03d $\n", 0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
 	// Testing with multiple arguments
 	ft_putendl("\n\n * * * * * Testing with multiple arguments:  * * * * *");
 
@@ -359,13 +350,5 @@ int main(void)
 	real_return = printf("Real  printf: %.35d, % d and %lld $\n", b, a, ll);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-
-	// ERROR TEST
-	ft_putendl("\n\n * * * * * Error test:  * * * * *");
-
-	ft_putendl("\nInput: %-0d");
-	ft_printf("My ft_printf: %-0d $\n", a);
-	//printf("Real  printf: %-0d $\n", 0);
-
 */
 }

@@ -30,28 +30,27 @@ char	*ft_ltoa(long long n)
 {
 	long long	i;
 	long long	j;
-	long long	k;
 	char		*stri;
 
 	i = ft_longlen(n);
 	j = 0;
-	k = n;
+	if (n == -9223372036854775807 - 1)
+		return ("-9223372036854775808");
 	stri = (char *)malloc(sizeof(char) * i + 1);
 	if (stri == NULL)
 		return (NULL);
 	stri[i--] = '\0';
-	if (k < 0)
+	if (n < 0)
 	{
 		stri[0] = '-';
-		k *= -1;
+		n *= -1;
 	}
-	while (k / 10 != 0)
+	while (n / 10 != 0)
 	{
-		stri[i] = k % 10 + '0';
-		k = k / 10;
-		i--;
+		stri[i--] = n % 10 + '0';
+		n = n / 10;
 	}
-	stri[i--] = k % 10 + '0';
+	stri[i--] = n % 10 + '0';
 	return (stri);
 }
 

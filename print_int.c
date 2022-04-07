@@ -37,7 +37,8 @@ void	print_int(t_data *data, long long arg)
 	set_padding(data, print, itoa_string, len);
 	write_print(data, print, len, 0);
 	free(print);
-	free(itoa_string);
+	if (ft_strcmp(itoa_string, "-9223372036854775808") != 0)
+		free(itoa_string);
 }
 
 void	set_padding(t_data *data, char *print, char *num_str, int len)
