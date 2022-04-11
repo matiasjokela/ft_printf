@@ -14,14 +14,17 @@
 
 int main(void)
 {
-	
+	/*
 	printf("return: %d\n", ft_printf("testi: %.5d$\n", 5));
 	printf("return: %d\n", printf("testi: %.5d$\n", 5));
 
-	
+	*/
 	
 
-/*
+	MIKSI printin vapauttaminen seg faulttaa min longilla?
+	Korjaa 0 input 0 precisionilla
+
+
 	int a = 207;
 	int b = -207;
 	short h = 207;
@@ -350,5 +353,5 @@ int main(void)
 	real_return = printf("Real  printf: %.35d, % d and %lld $\n", b, a, ll);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-*/
+
 }

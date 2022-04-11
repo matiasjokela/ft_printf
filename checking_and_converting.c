@@ -39,17 +39,5 @@ void	dispatch(t_data *data, va_list ap)
 	if (data->conversion == '%')
 		print_modulo(data);
 	else if (data->conversion == 'd' || data->conversion == 'i')
-	{
-		if (data->mod_h == 1)
-			data->signed_mod = (short)va_arg(ap, int);
-		else if (data->mod_hh == 1)
-			data->signed_mod = (char)va_arg(ap, int);
-		else if (data->mod_l == 1)
-			data->signed_mod = (long)va_arg(ap, long);
-		else if (data->mod_ll == 1)
-			data->signed_mod = (long long)va_arg(ap, long long);
-		else
-			data->signed_mod = (int)va_arg(ap, int);
-		print_int(data, data->signed_mod);
-	}
+		print_int(data, ap);
 }

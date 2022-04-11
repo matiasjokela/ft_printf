@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-long long	int_arg_len(t_data *data, long long arg)
+long long	arg_len_int(t_data *data, long long arg)
 {
 	long long	len;
 
@@ -23,6 +23,10 @@ long long	int_arg_len(t_data *data, long long arg)
 		len = data->precision;
 	if (len == data->precision && arg < 0)
 		len++;
+	if ((data->blank == 1 || data->plus == 1) && (len == ft_intlen(arg) \
+	|| len == data->precision))
+		len++;
+	data->total_len += len;
 	return (len);
 }
 
@@ -34,12 +38,12 @@ char	*ft_ltoa(long long n)
 
 	i = ft_longlen(n);
 	j = 0;
-	if (n == -9223372036854775807 - 1)
-		return ("-9223372036854775808");
 	stri = (char *)malloc(sizeof(char) * i + 1);
 	if (stri == NULL)
 		return (NULL);
 	stri[i--] = '\0';
+	if (n == -9223372036854775807 - 1)
+		return (min_long(stri));
 	if (n < 0)
 	{
 		stri[0] = '-';
@@ -52,6 +56,31 @@ char	*ft_ltoa(long long n)
 	}
 	stri[i--] = n % 10 + '0';
 	return (stri);
+}
+
+char	*min_long(char *str)
+{
+	str[0] = '-';
+	str[1] = '9';
+	str[2] = '2';
+	str[3] = '2';
+	str[4] = '3';
+	str[5] = '3';
+	str[6] = '7';
+	str[7] = '2';
+	str[8] = '0';
+	str[9] = '3';
+	str[10] = '6';
+	str[11] = '8';
+	str[12] = '5';
+	str[13] = '4';
+	str[14] = '7';
+	str[15] = '7';
+	str[16] = '5';
+	str[17] = '8';
+	str[18] = '0';
+	str[19] = '8';
+	return (str);
 }
 
 long long	ft_longlen(long long n)

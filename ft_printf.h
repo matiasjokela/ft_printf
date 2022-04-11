@@ -58,14 +58,16 @@ void		read_modifiers(const char *format, int *i, t_data *data);
 void		print_data(t_data *data);												//REMOVE
 void		ft_putchar_pro(char c, t_data *data, int i);
 void		dispatch(t_data *data, va_list ap);
-void		print_int(t_data *data, long long arg);
-long long	int_arg_len(t_data *data, long long arg);
+void		print_int(t_data *data, va_list ap);
+long long	arg_len_int(t_data *data, long long arg);
 long long	ft_longlen(long long n);
 char		*ft_ltoa(long long n);
 void		set_padding(t_data *data, char *print, char *num_str, int len);
 void		write_print(t_data *data, char *print, int len, int arg);
 void		print_modulo(t_data *data);
 void		read_and_write(const char *format, va_list ap, t_data *data);
+long long	check_length_mod_int(t_data *data, va_list ap);
+char		*min_long(char *str);
 
 
 #endif

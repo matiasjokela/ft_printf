@@ -12,33 +12,30 @@
 
 #include "ft_printf.h"
 
-void	print_int(t_data *data, long long arg)
+void	print_int(t_data *data, va_list ap)
 {
 	long long	len;
 	char		*print;
-	char		*itoa_string;
+	char		*num_str;
+	long long	arg;
 
+	print = (char *)malloc(sizeof(char) * (len * 2));
+	if (print == NULL)
+		exit(-1);
+	arg = check_length_mod_int(data, ap);
 	if (arg < 0)
 	{
 		data->blank = 0;
 		data->plus = 0;
-		itoa_string = ft_ltoa(arg * -1);
+		num_str = ft_ltoa(arg * -1);
 	}
 	else
-		itoa_string = ft_ltoa(arg);
-	len = int_arg_len(data, arg);
-	if ((data->blank == 1 || data->plus == 1) && (len == ft_intlen(arg) \
-	|| len == data->precision))
-		len++;
-	data->total_len += len;
-	print = (char *)malloc(sizeof(char) * (len * 2));
-	if (print == NULL)
-		exit(-1);
-	set_padding(data, print, itoa_string, len);
+		num_str = ft_ltoa(arg);
+	len = arg_len_int(data, arg);
+	set_padding(data, print, num_str, len);
 	write_print(data, print, len, 0);
-	free(print);
-	if (ft_strcmp(itoa_string, "-9223372036854775808") != 0)
-		free(itoa_string);
+	free(num_str);
+	//free(print);
 }
 
 void	set_padding(t_data *data, char *print, char *num_str, int len)
@@ -84,4 +81,19 @@ void	write_print(t_data *data, char *print, int len, int i)
 		else
 			write(1, print, len);
 	}
+}
+
+long long	check_length_mod_int(t_data *data, va_list ap)
+{
+	if (data->mod_h == 1)
+		data->signed_mod = (short)va_arg(ap, int);
+	else if (data->mod_hh == 1)
+		data->signed_mod = (char)va_arg(ap, int);
+	else if (data->mod_l == 1)
+		data->signed_mod = (long)va_arg(ap, long);
+	else if (data->mod_ll == 1)
+		data->signed_mod = (long long)va_arg(ap, long long);
+	else
+		data->signed_mod = (int)va_arg(ap, int);
+	return (data->signed_mod);
 }
