@@ -12,26 +12,15 @@
 
 #include "ft_printf.h"
 
-void	check_and_print(const char *form, int *i, t_data *data, va_list ap)
-{
-	while (form[*i] != '\0')
-	{
-		if (form[*i] != '%')
-			ft_putchar_pro(form[*i], data, 1);
-		else
-			convert(form, i, data, ap);
-		*i += 1;
-	}
-}
 
-void	convert(const char *format, int *i, t_data *data, va_list ap)
+int	convert(const char *format, int *i, t_data *data, va_list ap)
 {
 	clear_data(data);
 	*i += 1;
 	if (!isvalid(format, *i))
-		return ;
+		return (0);
 	read_data(format, i, data);
-	print_conversion(data, ap);
+	return (1);
 }
 
 int	isvalid(const char *format, int i)
@@ -45,7 +34,7 @@ int	isvalid(const char *format, int i)
 	return (1);
 }
 
-void	print_conversion(t_data *data, va_list ap)
+void	dispatch(t_data *data, va_list ap)
 {
 	if (data->conversion == '%')
 		print_modulo(data);

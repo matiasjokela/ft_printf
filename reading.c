@@ -18,6 +18,7 @@ void	read_data(const char *format, int *i, t_data *data)
 	read_dimensions(format, i, data);
 	read_modifiers(format, i, data);
 	data->conversion = format[*i];
+	*i += 1;
 	if (data->conversion == '%')
 		return ;
 	if (data->minus == 1 || data->precision != -1)

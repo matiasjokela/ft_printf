@@ -14,12 +14,11 @@
 
 int main(void)
 {
-	printf("%5.d %5.0d$\n", 0, 0);
-	ft_printf("%5.d %5.0d$\n", 5, 5);
-	printf("%.d %.0d$\n", 0, 0);
-	ft_printf("%.d %.0d$\n", 0, 0);
-	printf("%ld$\n", -9223372036854775807 - 1);
-	ft_printf("%lld$\n", -9223372036854775807 - 1);
+	
+	printf("return: %d\n", ft_printf("testi: %.5d$\n", 5));
+	printf("return: %d\n", printf("testi: %.5d$\n", 5));
+
+	
 	
 
 /*
