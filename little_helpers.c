@@ -38,8 +38,8 @@ char	*ft_ltoa(long long n)
 
 	i = ft_longlen(n);
 	j = 0;
-	if (n == -9223372036854775807 - 1)
-		return ("-9223372036854775808");
+	if (n < -9223372036854775807)
+		return (ft_strdup("-9223372036854775808"));
 	stri = (char *)malloc(sizeof(char) * i + 1);
 	if (stri == NULL)
 		return (NULL);

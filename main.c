@@ -21,8 +21,8 @@ int main(void)
 	*/
 	
 
-	MIKSI printin vapauttaminen seg faulttaa min longilla?
-	Korjaa 0 input 0 precisionilla
+	//MIKSI printin vapauttaminen seg faulttaa min longilla?
+	//Korjaa 0 input 0 precisionilla
 
 
 	int a = 207;

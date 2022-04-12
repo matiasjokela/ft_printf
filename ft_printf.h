@@ -20,7 +20,6 @@
 # define FLAGS "#0- +"
 # define SPECIFIERS "#0-+ .*0123456789hlL"
 # define CONVERSION "cspdiouxXf%"
-# define MINLONG -9223372036854775808LL;
 
 typedef struct s_data
 {

@@ -23,7 +23,9 @@ void	print_int(t_data *data, va_list ap)
 	if (print == NULL)
 		exit(-1);
 	arg = check_length_mod_int(data, ap);
-	if (arg < 0)
+	if (arg < -9223372036854775807)
+		num_str = ft_strdup("9223372036854775808");
+	else if (arg < 0)
 	{
 		data->blank = 0;
 		data->plus = 0;
@@ -34,8 +36,7 @@ void	print_int(t_data *data, va_list ap)
 	len = arg_len_int(data, arg);
 	set_padding(data, print, num_str, len);
 	write_print(data, print, len, 0);
-	if (arg == -9223372036854775807 - 1)
-		free(num_str);
+	free(num_str);
 	free(print);
 }
 
