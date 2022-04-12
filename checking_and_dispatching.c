@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checking_and_converting.c                          :+:      :+:    :+:   */
+/*   checking_and_dispatching.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjokela <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/07 16:15:01 by mjokela           #+#    #+#             */
-/*   Updated: 2022/04/07 16:15:04 by mjokela          ###   ########.fr       */
+/*   Created: 2022/04/12 14:58:37 by mjokela           #+#    #+#             */
+/*   Updated: 2022/04/12 14:58:41 by mjokela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-
-int	convert(const char *format, int *i, t_data *data, va_list ap)
-{
-	clear_data(data);
-	*i += 1;
-	if (!isvalid(format, *i))
-		return (0);
-	read_data(format, i, data);
-	return (1);
-}
 
 int	isvalid(const char *format, int i)
 {

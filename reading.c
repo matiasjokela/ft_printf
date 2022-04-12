@@ -78,24 +78,17 @@ void	read_modifiers(const char *format, int *i, t_data *data)
 	else if (format[*i] == 'l')
 		data->mod_ll = 1;
 	else if (format[*i] == 'L')
-		data->mod_L = 1;
+		data->mod_ld = 1;
 	while (ft_strchr(CONVERSION, format[*i]) == NULL && format[*i] != '\0')
 		*i += 1;
 }
 
-void	print_data(t_data *data)
+int	convert(const char *format, int *i, t_data *data, va_list ap)
 {
-	printf("minus: %d\n", data->minus);
-	printf("zero: %d\n", data->zero);
-	printf("plus: %d\n", data->plus);
-	printf("blank: %d\n", data->blank);
-	printf("hash: %d\n", data->hash);
-	printf("width: %d\n", data->width);
-	printf("precision: %d\n", data->precision);
-	printf("mod_h: %d\n", data->mod_h);
-	printf("mod_hh: %d\n", data->mod_hh);
-	printf("mod_l: %d\n", data->mod_l);
-	printf("mod_ll: %d\n", data->mod_ll);
-	printf("mod_L: %d\n", data->mod_L);
-	printf("conversion: %c\n", data->conversion);
+	clear_data(data);
+	*i += 1;
+	if (!isvalid(format, *i))
+		return (0);
+	read_data(format, i, data);
+	return (1);
 }

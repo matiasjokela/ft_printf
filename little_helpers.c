@@ -12,52 +12,6 @@
 
 #include "ft_printf.h"
 
-long long	arg_len_int(t_data *data, long long arg)
-{
-	long long	len;
-
-	len = ft_longlen(arg);
-	if (data->width > len)
-		len = data->width;
-	if (data->precision > len)
-		len = data->precision;
-	if (len == data->precision && arg < 0)
-		len++;
-	if ((data->blank == 1 || data->plus == 1) && (len == ft_intlen(arg) \
-	|| len == data->precision))
-		len++;
-	data->total_len += len;
-	return (len);
-}
-
-char	*ft_ltoa(long long n)
-{
-	long long	i;
-	long long	j;
-	char		*stri;
-
-	i = ft_longlen(n);
-	j = 0;
-	if (n < -9223372036854775807)
-		return (ft_strdup("-9223372036854775808"));
-	stri = (char *)malloc(sizeof(char) * i + 1);
-	if (stri == NULL)
-		return (NULL);
-	stri[i--] = '\0';
-	if (n < 0)
-	{
-		stri[0] = '-';
-		n *= -1;
-	}
-	while (n / 10 != 0)
-	{
-		stri[i--] = n % 10 + '0';
-		n = n / 10;
-	}
-	stri[i--] = n % 10 + '0';
-	return (stri);
-}
-
 long long	ft_longlen(long long n)
 {
 	long long	len;
@@ -87,16 +41,23 @@ void	clear_data(t_data *data)
 	data->mod_hh = 0;
 	data->mod_l = 0;
 	data->mod_ll = 0;
-	data->mod_L = 0;
+	data->mod_ld = 0;
 	data->conversion = 0;
 }
 
-void	ft_putchar_pro(char c, t_data *data, int i)
+void	print_data(t_data *data)
 {
-	while (i > 0)
-	{
-		ft_putchar(c);
-		data->total_len++;
-		i--;
-	}
+	printf("minus: %d\n", data->minus);
+	printf("zero: %d\n", data->zero);
+	printf("plus: %d\n", data->plus);
+	printf("blank: %d\n", data->blank);
+	printf("hash: %d\n", data->hash);
+	printf("width: %d\n", data->width);
+	printf("precision: %d\n", data->precision);
+	printf("mod_h: %d\n", data->mod_h);
+	printf("mod_hh: %d\n", data->mod_hh);
+	printf("mod_l: %d\n", data->mod_l);
+	printf("mod_ll: %d\n", data->mod_ll);
+	printf("mod_L: %d\n", data->mod_ld);
+	printf("conversion: %c\n", data->conversion);
 }

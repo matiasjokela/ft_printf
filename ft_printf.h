@@ -37,7 +37,7 @@ typedef struct s_data
 	int					mod_hh;
 	int					mod_l;
 	int					mod_ll;
-	int 				mod_L;
+	int					mod_ld;
 	//modifier values
 	long long			signed_mod;
 	unsigned long long	unsigned_mod;
@@ -69,6 +69,4 @@ void		read_and_write(const char *format, va_list ap, t_data *data);
 long long	check_length_mod_int(t_data *data, va_list ap);
 char		*get_num_str(t_data *data, long long arg);
 
-
 #endif
-

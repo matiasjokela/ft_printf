@@ -18,7 +18,7 @@ void	print_int(t_data *data, va_list ap)
 	char		*print;
 	char		*num_str;
 	long long	arg;
-	
+
 	if (data->signed_mod == 0 && data->precision == 0 && data->width == 0)
 		return ;
 	print = (char *)malloc(sizeof(char) * (len * 2));
@@ -50,54 +50,6 @@ char	*get_num_str(t_data *data, long long arg)
 	return (num_str);
 }
 
-void	set_padding(t_data *data, char *print, char *num_str, int len)
-{
-	int	i;
-	int	precision;
-
-	i = ft_strlen(num_str);
-	precision = data->precision - i;
-	if (data->zero == 1)
-		ft_memset(print, '0', len * 2);
-	else
-		ft_memset(print, ' ', len * 2);
-	if (data->signed_mod == 0 && data->precision == 0)
-			print[len - 1] = ' ';
-	else
-		ft_memcpy(&print[len - i], num_str, i);
-	if (precision > 0)
-		ft_memset(&print[len - i - precision], '0', precision);
-}
-
-void	write_print(t_data *data, char *print, int len, int i)
-{
-	if (data->zero == 1)
-	{
-		if (data->signed_mod < 0)
-			print[0] = '-';
-		else if (data->plus == 1)
-			print[0] = '+';
-		else if (data->blank == 1)
-			print[0] = ' ';
-		write(1, print, len);
-	}
-	else
-	{
-		while (print[i] == ' ')
-			i++;
-		if (data->signed_mod < 0)
-			print[--i] = '-';
-		else if (data->plus == 1)
-			print[--i] = '+';
-		else if (data->blank == 1)
-			print[--i] = ' ';
-		if (data->minus == 1)
-			write(1, &print[i], len);
-		else
-			write(1, print, len);
-	}
-}
-
 long long	check_length_mod_int(t_data *data, va_list ap)
 {
 	if (data->mod_h == 1)
@@ -111,4 +63,50 @@ long long	check_length_mod_int(t_data *data, va_list ap)
 	else
 		data->signed_mod = (int)va_arg(ap, int);
 	return (data->signed_mod);
+}
+
+long long	arg_len_int(t_data *data, long long arg)
+{
+	long long	len;
+
+	len = ft_longlen(arg);
+	if (data->width > len)
+		len = data->width;
+	if (data->precision > len)
+		len = data->precision;
+	if (len == data->precision && arg < 0)
+		len++;
+	if ((data->blank == 1 || data->plus == 1) && (len == ft_intlen(arg) \
+	|| len == data->precision))
+		len++;
+	data->total_len += len;
+	return (len);
+}
+
+char	*ft_ltoa(long long n)
+{
+	long long	i;
+	long long	j;
+	char		*stri;
+
+	i = ft_longlen(n);
+	j = 0;
+	if (n < -9223372036854775807)
+		return (ft_strdup("-9223372036854775808"));
+	stri = (char *)malloc(sizeof(char) * i + 1);
+	if (stri == NULL)
+		return (NULL);
+	stri[i--] = '\0';
+	if (n < 0)
+	{
+		stri[0] = '-';
+		n *= -1;
+	}
+	while (n / 10 != 0)
+	{
+		stri[i--] = n % 10 + '0';
+		n = n / 10;
+	}
+	stri[i--] = n % 10 + '0';
+	return (stri);
 }
