@@ -68,5 +68,10 @@ void		print_modulo(t_data *data);
 void		read_and_write(const char *format, va_list ap, t_data *data);
 long long	check_length_mod_int(t_data *data, va_list ap);
 char		*get_num_str(t_data *data, long long arg);
+char		*ft_ltoau_base(unsigned long long n, int base);
+void		print_octal(t_data *data, va_list ap);
+void		check_length_mod_oct(t_data *data, va_list ap);
+long long	arg_len_oct(t_data *data, long long arg, char *oct_str);
+
 
 #endif

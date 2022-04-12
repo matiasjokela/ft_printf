@@ -29,4 +29,6 @@ void	dispatch(t_data *data, va_list ap)
 		print_modulo(data);
 	else if (data->conversion == 'd' || data->conversion == 'i')
 		print_int(data, ap);
+	else if (data->conversion == 'o')
+		print_octal(data, ap);
 }

@@ -19,12 +19,12 @@ void	print_int(t_data *data, va_list ap)
 	char		*num_str;
 	long long	arg;
 
+	arg = check_length_mod_int(data, ap);
 	if (data->signed_mod == 0 && data->precision == 0 && data->width == 0)
 		return ;
 	print = (char *)malloc(sizeof(char) * (len * 2));
 	if (print == NULL)
 		exit(-1);
-	arg = check_length_mod_int(data, ap);
 	num_str = get_num_str(data, arg);
 	len = arg_len_int(data, arg);
 	set_padding(data, print, num_str, len);
