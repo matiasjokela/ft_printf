@@ -18,11 +18,25 @@ void	print_int(t_data *data, va_list ap)
 	char		*print;
 	char		*num_str;
 	long long	arg;
-
+	
+	if (data->signed_mod == 0 && data->precision == 0 && data->width == 0)
+		return ;
 	print = (char *)malloc(sizeof(char) * (len * 2));
 	if (print == NULL)
 		exit(-1);
 	arg = check_length_mod_int(data, ap);
+	num_str = get_num_str(data, arg);
+	len = arg_len_int(data, arg);
+	set_padding(data, print, num_str, len);
+	write_print(data, print, len, 0);
+	free(num_str);
+	free(print);
+}
+
+char	*get_num_str(t_data *data, long long arg)
+{
+	char	*num_str;
+
 	if (arg < -9223372036854775807)
 		num_str = ft_strdup("9223372036854775808");
 	else if (arg < 0)
@@ -33,11 +47,7 @@ void	print_int(t_data *data, va_list ap)
 	}
 	else
 		num_str = ft_ltoa(arg);
-	len = arg_len_int(data, arg);
-	set_padding(data, print, num_str, len);
-	write_print(data, print, len, 0);
-	free(num_str);
-	free(print);
+	return (num_str);
 }
 
 void	set_padding(t_data *data, char *print, char *num_str, int len)
@@ -51,7 +61,10 @@ void	set_padding(t_data *data, char *print, char *num_str, int len)
 		ft_memset(print, '0', len * 2);
 	else
 		ft_memset(print, ' ', len * 2);
-	ft_memcpy(&print[len - i], num_str, i);
+	if (data->signed_mod == 0 && data->precision == 0)
+			print[len - 1] = ' ';
+	else
+		ft_memcpy(&print[len - i], num_str, i);
 	if (precision > 0)
 		ft_memset(&print[len - i - precision], '0', precision);
 }

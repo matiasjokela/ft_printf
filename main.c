@@ -15,14 +15,13 @@
 int main(void)
 {
 	/*
-	printf("return: %d\n", ft_printf("testi: %.5d$\n", 5));
-	printf("return: %d\n", printf("testi: %.5d$\n", 5));
+	printf("return: %d\n", ft_printf("testi: %5.d %5.0d $\n", 0, 0));
+	printf("return: %d\n", printf("testi: %5.d %5.0d $\n", 0, 0));
+	printf("return: %d\n", ft_printf("testi: %.d %.0d $\n", 0, 0));
+	printf("return: %d\n", printf("testi: %.d %.0d $\n", 0, 0));*/
 
-	*/
 	
 
-	//MIKSI printin vapauttaminen seg faulttaa min longilla?
-	//Korjaa 0 input 0 precisionilla
 
 
 	int a = 207;

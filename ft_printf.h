@@ -67,6 +67,7 @@ void		write_print(t_data *data, char *print, int len, int arg);
 void		print_modulo(t_data *data);
 void		read_and_write(const char *format, va_list ap, t_data *data);
 long long	check_length_mod_int(t_data *data, va_list ap);
+char		*get_num_str(t_data *data, long long arg);
 
 
 #endif
