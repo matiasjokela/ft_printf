@@ -20,6 +20,7 @@
 # define FLAGS "#0- +"
 # define SPECIFIERS "#0-+ .*0123456789hlL"
 # define CONVERSION "cspdiouxXf%"
+# define MINLONG -9223372036854775808LL;
 
 typedef struct s_data
 {
@@ -67,7 +68,6 @@ void		write_print(t_data *data, char *print, int len, int arg);
 void		print_modulo(t_data *data);
 void		read_and_write(const char *format, va_list ap, t_data *data);
 long long	check_length_mod_int(t_data *data, va_list ap);
-char		*min_long(char *str);
 
 
 #endif

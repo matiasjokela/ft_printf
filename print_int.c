@@ -34,8 +34,9 @@ void	print_int(t_data *data, va_list ap)
 	len = arg_len_int(data, arg);
 	set_padding(data, print, num_str, len);
 	write_print(data, print, len, 0);
-	free(num_str);
-	//free(print);
+	if (arg == -9223372036854775807 - 1)
+		free(num_str);
+	free(print);
 }
 
 void	set_padding(t_data *data, char *print, char *num_str, int len)
