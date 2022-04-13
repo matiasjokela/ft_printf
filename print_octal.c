@@ -22,7 +22,14 @@ void	print_octal(t_data *data, va_list ap)
 	check_length_mod_oct(data, ap);
 	arg = data->unsigned_mod;
 	oct_str = ft_ltoau_base(arg, 8);
-	len = arg_len_oct(data, arg, oct_str); // FUNCTION NOT TESTED
+	len = arg_len_oct(data, arg, oct_str);
+	print = (char *)malloc(sizeof(char) * (len * 2));
+	if (print == NULL)
+		exit(-1);
+	set_padding(data, print, oct_str, len);
+	write_print(data, print, len, 0);
+	free(oct_str);
+	free(print);
 
 
 }
@@ -67,13 +74,15 @@ void	check_length_mod_oct(t_data *data, va_list ap)
 long long	arg_len_oct(t_data *data, long long arg, char *oct_str)
 {
 	long long	len;
+	int			strlen;
 
-	len = ft_strlen(oct_str);
+	strlen = ft_strlen(oct_str);
+	len = strlen;
 	if (data->width > len)
 		len = data->width;
 	if (data->precision > len)
 		len = data->precision;
-	if (len == data->precision && arg < 0)
+	if (data->hash == 1 && len == strlen)
 		len++;
 	data->total_len += len;
 	return (len);

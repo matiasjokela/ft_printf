@@ -69,6 +69,8 @@ void	set_padding(t_data *data, char *print, char *num_str, int len)
 			print[len - 1] = ' ';
 	else
 		ft_memcpy(&print[len - i], num_str, i);
+	if (data->conversion == 'o' && data->hash == 1)
+		print[len - i - 1] = '0';
 	if (precision > 0)
 		ft_memset(&print[len - i - precision], '0', precision);
 }
