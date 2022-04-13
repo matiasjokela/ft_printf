@@ -16,8 +16,24 @@
 
 int main(void)
 {
+
+	/*printf("return: %d\n", ft_printf("testi: %#o $\n", 0));
+	printf("return: %d\n", printf("testi: %#o $\n", 0));
+
+	printf("return: %d\n", ft_printf("testi: %.o %.0o $\n", 0, 0));
+	printf("return: %d\n", printf("testi: %.o %.0o $\n", 0, 0));
+
+	printf("return: %d\n", ft_printf("testi: %5.o %5.0o $\n", 0, 0));
+	printf("return: %d\n", printf("testi: %5.o %5.0o $\n", 0, 0));
+
+	printf("return: %d\n", ft_printf("testi: %#.o %#.0o $\n", 0, 0));
+	printf("return: %d\n", printf("testi: %#.o %#.0o $\n", 0, 0));
+
+	printf("return: %d\n", ft_printf("testi: %5.o %5.0o $\n", 0, 0));
+	printf("return: %d\n", printf("testi: %5.o %5.0o $\n", 0, 0));*/
+
 	//unsigned long long maxllu = 18446744073709551615;
-	
+
 	unsigned int a = 207;
 	unsigned int b = 0;
 	unsigned short h = 207;
