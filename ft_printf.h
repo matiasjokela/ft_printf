@@ -73,6 +73,7 @@ void		print_octal(t_data *data, va_list ap);
 void		check_length_mod_oct(t_data *data, va_list ap);
 long long	arg_len_oct(t_data *data, long long arg, char *oct_str);
 void		set_padding_oct(t_data *data, char *print, char *num_str, int len);
+void		print_hex(t_data *data, va_list ap);
 
 
 #endif

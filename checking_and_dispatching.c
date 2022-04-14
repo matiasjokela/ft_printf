@@ -31,4 +31,6 @@ void	dispatch(t_data *data, va_list ap)
 		print_int(data, ap);
 	else if (data->conversion == 'o')
 		print_octal(data, ap);
+	else if (data->conversion == 'x' || data->conversion == 'X')
+		print_hex(data, ap);
 }
