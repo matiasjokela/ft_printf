@@ -23,7 +23,7 @@ void	print_octal(t_data *data, va_list ap)
 	arg = data->unsigned_mod;
 	if (data->hash == 0 && arg == 0 && data->precision == 0 && data->width == 0)
 		return ;
-	oct_str = ft_ltoau_base(arg, 8);
+	oct_str = ft_ltoau_base(arg, 8, data);
 	len = arg_len_oct(data, arg, oct_str);
 	print = (char *)malloc(sizeof(char) * (len * 2));
 	if (print == NULL)
@@ -34,7 +34,7 @@ void	print_octal(t_data *data, va_list ap)
 	free(print);
 }
 
-char	*ft_ltoau_base(unsigned long long n, int base)
+char	*ft_ltoau_base(unsigned long long n, int base, t_data *data)
 {
 	int		i;
 	char	*hex;
@@ -43,7 +43,10 @@ char	*ft_ltoau_base(unsigned long long n, int base)
 	if (base < 2 || base > 16)
 		return (NULL);
 	i = 63;
-	hex = "0123456789ABCDEF";
+	if (data->conversion == 'x')
+		hex = "0123456789abcdef";
+	else
+		hex = "0123456789ABCDEF";
 	ft_bzero(stri, 65);
 	while (n / base != 0)
 	{
@@ -82,7 +85,12 @@ long long	arg_len_oct(t_data *data, long long arg, char *oct_str)
 	if (data->precision > len)
 		len = data->precision;
 	if (data->hash == 1 && len == strlen && arg != 0)
-		len++;
+	{
+		if (data->conversion == 'x' || data->conversion == 'X')
+			len += 2;
+		else
+			len++;
+	}
 	data->total_len += len;
 	return (len);
 }

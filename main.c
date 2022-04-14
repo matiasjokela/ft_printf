@@ -16,6 +16,18 @@
 
 int main(void)
 {
+	printf("return: %d\n", ft_printf("testi: %#.8x $\n", 846204));
+	printf("return: %d\n", printf("testi: %#.8x $\n", 846204));
+	printf("\n");
+	printf("return: %d\n", ft_printf("testi: %#.x %#.0x $\n", 0, 0));
+	printf("return: %d\n", printf("testi:%#.x %#.0x $\n", 0, 0));
+	printf("\n");
+	printf("return: %d\n", ft_printf("testi: %#-12.8X $\n", 846204));
+	printf("return: %d\n", printf("testi: %#-12.8X $\n", 846204));
+	printf("\n");
+
+
+/*
 	
 	unsigned int a = 846204;
 	unsigned int b = 664;
@@ -299,5 +311,5 @@ int main(void)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
 
-
+*/
 }
