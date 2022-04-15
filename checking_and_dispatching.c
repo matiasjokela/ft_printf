@@ -37,4 +37,6 @@ void	dispatch(t_data *data, va_list ap)
 		print_uint(data, ap);
 	else if (data->conversion == 'c')
 		print_char(data, ap);
+	else if (data->conversion == 'p')
+		print_pointer(data, ap);
 }

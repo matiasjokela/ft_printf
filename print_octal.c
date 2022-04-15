@@ -43,10 +43,10 @@ char	*ft_ltoau_base(unsigned long long n, int base, t_data *data)
 	if (base < 2 || base > 16)
 		return (NULL);
 	i = 63;
-	if (data->conversion == 'x')
-		hex = "0123456789abcdef";
-	else
+	if (data->conversion == 'X')
 		hex = "0123456789ABCDEF";
+	else
+		hex = "0123456789abcdef";
 	ft_bzero(stri, 65);
 	while (n / base != 0)
 	{

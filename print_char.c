@@ -20,7 +20,11 @@ void	print_char(t_data *data, va_list ap)
 	if (data->width > len)
 		len = data->width;
 	data->total_len += len;
-	set_padding_uint(data, print, &c, len);
+	if (data->zero == 1)
+		ft_memset(print, '0', len * 2);
+	else
+		ft_memset(print, ' ', len * 2);
+	print[len - 1] = c;
 	write_print(data, print, len, 0);
 	free(print);
 }

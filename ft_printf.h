@@ -78,6 +78,8 @@ void		set_padding_hex(t_data *data, char *print, char *num_str, int len);
 long long	arg_len_hex(t_data *data, long long arg, char *oct_str);
 void		print_uint(t_data *data, va_list ap);
 void		print_char(t_data *data, va_list ap);
+void		print_pointer(t_data *data, va_list ap);
+void		set_padding_pointer(t_data *data, char *print, char *pstr, int len);
 
 
 #endif
