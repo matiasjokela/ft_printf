@@ -35,4 +35,6 @@ void	dispatch(t_data *data, va_list ap)
 		print_hex(data, ap);
 	else if (data->conversion == 'u')
 		print_uint(data, ap);
+	else if (data->conversion == 'c')
+		print_char(data, ap);
 }

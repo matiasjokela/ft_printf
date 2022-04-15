@@ -32,7 +32,7 @@ void	print_modulo(t_data *data)
 	ft_putchar_pro('%', data, 1);
 }
 
-void	ft_putchar_pro(char c, t_data *data, int i)
+void	ft_putchar_pro(unsigned char c, t_data *data, int i)
 {
 	while (i > 0)
 	{
