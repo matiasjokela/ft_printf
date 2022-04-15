@@ -76,21 +76,16 @@ void	check_length_mod_oct(t_data *data, va_list ap)
 long long	arg_len_oct(t_data *data, long long arg, char *oct_str)
 {
 	long long	len;
-	int			strlen;
+	int			strl;
 
-	strlen = ft_strlen(oct_str);
-	len = strlen;
+	strl = ft_strlen(oct_str);
+	len = strl;
 	if (data->width > len)
 		len = data->width;
 	if (data->precision > len)
 		len = data->precision;
-	if (data->hash == 1 && len == strlen && arg != 0)
-	{
-		if (data->conversion == 'x' || data->conversion == 'X')
-			len += 2;
-		else
+	if (data->hash == 1 && len == strl && arg != 0)
 			len++;
-	}
 	data->total_len += len;
 	return (len);
 }
