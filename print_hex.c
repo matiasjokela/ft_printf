@@ -19,7 +19,7 @@ void	print_hex(t_data *data, va_list ap)
 	char				*oct_str;
 	unsigned long long	arg;
 
-	check_length_mod_oct(data, ap);
+	check_length_mod_uint(data, ap);
 	arg = data->unsigned_mod;
 	if (arg == 0 && data->precision == 0 && data->width == 0)
 		return ;
