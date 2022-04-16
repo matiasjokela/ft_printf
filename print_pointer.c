@@ -13,16 +13,20 @@ void	print_pointer(t_data *data, va_list ap)
 
 	data->unsigned_mod = (unsigned long long)va_arg(ap, unsigned long long);
 	arg = data->unsigned_mod;
-	data->precision = 0;
 	pstr = ft_ltoau_base(arg, 16, data);
-	print = (char *)malloc(sizeof(char) * (len * 2));
-	if (print == NULL)
-		exit(-1);
 	len = ft_strlen(pstr);
 	if (data->width > len)
 		len = data->width;
+	if (data->precision > len)
+		len = data->precision;
+	if (len != data->width)
+		len += 2;
+	if (data->width == 0 && data->precision == 0 && arg == 0)
+		len = 2;
 	data->total_len += len;
-
+	print = (char *)malloc(sizeof(char) * (len * 2));
+	if (print == NULL)
+		exit(-1);
 	set_padding_pointer(data, print, pstr, len);
 	write_print(data, print, len, 0);
 	free(pstr);
@@ -34,18 +38,24 @@ void	set_padding_pointer(t_data *data, char *print, char *pstr, int len)
 	int	i;
 	int	precision;
 
+	if (data->width == 0 && data->precision == 0 && data->unsigned_mod == 0)
+	{
+		print[0] = '0';
+		print[1] = 'x';
+		return ;
+	}
 	i = ft_strlen(pstr);
 	precision = data->precision - i;
+	data->blank = 0;
+	data->plus = 0;
 	ft_memset(print, ' ', len * 2);
-	if (!(data->precision == 0 && data->unsigned_mod == 0 && data->width != 0))
-		ft_memcpy(&print[len - i], pstr, i);
+	ft_memcpy(&print[len - i], pstr, i);
 	if (precision > 0)
 		ft_memset(&print[len - i - precision], '0', precision);
 	if (precision > 0)
 		i = len - i - precision;
 	else
 		i = len - i;
-	printf("here\n");
-	//print[i - 2] = '0';
-	//print[i - 1] = 'x';
+	print[i - 2] = '0';
+	print[i - 1] = 'x';
 }
