@@ -19,7 +19,7 @@ void	read_data(const char *format, int *i, t_data *data)
 	read_modifiers(format, i, data);
 	data->conversion = format[*i];
 	*i += 1;
-	if (data->conversion == '%')
+	if (data->conversion == '%' || data->conversion == 'c')
 		return ;
 	if (data->minus == 1 || data->precision != -1)
 		data->zero = 0;

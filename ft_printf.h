@@ -80,6 +80,8 @@ void		print_uint(t_data *data, va_list ap);
 void		print_char(t_data *data, va_list ap);
 void		print_pointer(t_data *data, va_list ap);
 void		set_padding_pointer(t_data *data, char *print, char *pstr, int len);
+void		print_string(t_data *data, va_list ap);
+void		set_padding_str(t_data *data, char *print, char *str, int len);
 
 
 #endif
