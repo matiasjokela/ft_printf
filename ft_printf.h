@@ -41,6 +41,7 @@ typedef struct s_data
 	//modifier values
 	long long			signed_mod;
 	unsigned long long	unsigned_mod;
+	long double			float_mod;
 	//conversion
 	char				conversion;
 	//length
@@ -82,6 +83,11 @@ void		print_pointer(t_data *data, va_list ap);
 void		set_padding_pointer(t_data *data, char *print, char *pstr, int len);
 void		print_string(t_data *data, va_list ap);
 void		set_padding_str(t_data *data, char *print, char *str, int len);
+void		print_float(t_data *data, va_list ap);
+long double	check_length_mod_float(t_data *data, va_list ap);
+char		*get_float_str(t_data *data, long double arg);
+char		*ft_dtoa(long double n);
+int			ft_floatlen(long double n);
 
 
 #endif

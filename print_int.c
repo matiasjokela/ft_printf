@@ -22,11 +22,11 @@ void	print_int(t_data *data, va_list ap)
 	arg = check_length_mod_int(data, ap);
 	if (data->signed_mod == 0 && data->precision == 0 && data->width == 0)
 		return ;
+	num_str = get_num_str(data, arg);
+	len = arg_len_int(data, arg);
 	print = (char *)malloc(sizeof(char) * (len * 2));
 	if (print == NULL)
 		exit(-1);
-	num_str = get_num_str(data, arg);
-	len = arg_len_int(data, arg);
 	set_padding(data, print, num_str, len);
 	write_print(data, print, len, 0);
 	free(num_str);

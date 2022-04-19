@@ -17,6 +17,7 @@
 int main(void)
 {
 
+	ft_printf("testi: %f\n", 5.0);
 
 
 	
