@@ -86,8 +86,12 @@ void		set_padding_str(t_data *data, char *print, char *str, int len);
 void		print_float(t_data *data, va_list ap);
 long double	check_length_mod_float(t_data *data, va_list ap);
 char		*get_float_str(t_data *data, long double arg);
-char		*ft_dtoa(long double n);
-int			ft_floatlen(long double n);
+char		*ft_dtoa(long double n, t_data *data);
+int			ft_floatlen(long double n, t_data *data);
+void		get_fractal(long double n, t_data *data, int *i, char *str);
+long long	arg_len_float(t_data *data, char *float_str);
+void		set_padding_float(t_data *data, char *print, char *fstr, int len);
+void		write_print_float(t_data *data, char *print, int len, int i);
 
 
 #endif

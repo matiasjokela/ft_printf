@@ -21,7 +21,9 @@ void	read_data(const char *format, int *i, t_data *data)
 	*i += 1;
 	if (data->conversion == '%' || data->conversion == 'c')
 		return ;
-	if (data->minus == 1 || data->precision != -1)
+	if (data->minus == 1)
+		data->zero = 0;
+	if (data->precision != -1 && data->conversion != 'f')
 		data->zero = 0;
 	if (data->plus == 1)
 		data->blank = 0;
