@@ -1,5 +1,14 @@
-
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_float.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mjokela <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/19 12:23:09 by mjokela           #+#    #+#             */
+/*   Updated: 2022/04/19 12:23:12 by mjokela          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
@@ -46,7 +55,6 @@ char	*ft_dtoa(long double n)
 	int		i;
 
 	i = ft_floatlen(n);
-	printf("i: %d", i);
 	return ("jeejee");
 }
 
@@ -58,7 +66,6 @@ int	ft_floatlen(long double n)
 	i = 0;
 	tmp = n / 1;
 	i += ft_longlen(tmp);
-	printf("n: %Lf\n", n);
 
 
 	return i;

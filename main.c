@@ -12,13 +12,10 @@
 
 #include "ft_printf.h"
 
-
-
 int main(void)
 {
 
 	ft_printf("testi: %f\n", 5.0);
-
 
 	
 	
