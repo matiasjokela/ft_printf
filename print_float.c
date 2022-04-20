@@ -71,15 +71,16 @@ char	*ft_dtoa(long double n, t_data *data)
 	if (str == NULL)
 		return (NULL);
 	str[i--] = '\0';
+	tmp = (unsigned long long)n;
 	if (data->precision != 0)
 		get_fractal(n, data, &i, str);
 	else
 	{
-		n += 0.5;
+		if (n - (long double)tmp == 0.5 && tmp % 2 != 0)
+			n += 0.5;
 		if (data->hash == 1)
 			str[i--] = '.';
 	}
-	tmp = (unsigned long long)n;
 	while (tmp / 10 != 0)
 	{
 		str[i--] = tmp % 10 + '0';
@@ -140,8 +141,8 @@ long long	arg_len_float(t_data *data, char *float_str)
 	len = ft_strlen(float_str);
 	if (data->width > len)
 		len = data->width;
-	if (len != data->width && (data->float_mod < 0 || data->plus == 1 \
-	|| data->blank == 1))
+	if (len != data->width && (double_is_negative(data->float_mod) == 1 \
+	|| data->plus == 1 || data->blank == 1))
 		len++;
 	data->total_len += len;
 	return (len);
@@ -163,7 +164,7 @@ void	write_print_float(t_data *data, char *print, int len, int i)
 {
 	if (data->zero == 1)
 	{
-		if (data->float_mod < 0)
+		if (double_is_negative(data->float_mod) == 1)
 			print[0] = '-';
 		else if (data->plus == 1)
 			print[0] = '+';
@@ -175,7 +176,7 @@ void	write_print_float(t_data *data, char *print, int len, int i)
 	{
 		while (print[i] == ' ')
 			i++;
-		if (data->float_mod < 0)
+		if (double_is_negative(data->float_mod) == 1)
 			print[--i] = '-';
 		else if (data->plus == 1)
 			print[--i] = '+';
@@ -188,3 +189,10 @@ void	write_print_float(t_data *data, char *print, int len, int i)
 	}
 }
 
+int	double_is_negative(double n)
+{
+	unsigned long long	*tmp;
+
+	tmp = (unsigned long long *)&n;
+	return ((int)(*tmp >> 63));
+}

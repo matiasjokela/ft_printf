@@ -92,6 +92,7 @@ void		get_fractal(long double n, t_data *data, int *i, char *str);
 long long	arg_len_float(t_data *data, char *float_str);
 void		set_padding_float(t_data *data, char *print, char *fstr, int len);
 void		write_print_float(t_data *data, char *print, int len, int i);
+int			double_is_negative(double n);
 
 
 #endif

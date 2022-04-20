@@ -15,11 +15,30 @@
 int main(void)
 {
 
+
+
 	// -0 inputiin tehtävä is_negative funktio
 
 int real_return;
 	int my_return = 0;
 
+
+	printf("\n");
+	my_return = ft_printf("My ft_printf:  %Lf $\n", 9.9999995l);
+	real_return = printf("Real  printf:  %Lf $\n", 9.9999995l);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	printf("\n");
+	my_return = ft_printf("My ft_printf:  %.35Lf $\n", 42.123456789012345678901234567890l);
+	real_return = printf("Real  printf:  %.35Lf $\n",  42.123456789012345678901234567890l);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+
+
+	//**********//
+/*
 
 	ft_putendl("\n\n * * * * * * * * * * DOUBLE - conversion fF:  * * * * * * * * * *\n");
 
@@ -312,7 +331,7 @@ int real_return;
 	
 	
 	
-
+*/
 
 
 }
