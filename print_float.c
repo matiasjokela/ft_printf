@@ -67,20 +67,21 @@ char	*ft_dtoa(long double n, t_data *data)
 	unsigned long long	tmp;
 
 	i = ft_floatlen(n, data);
-	str = (char *)malloc(sizeof(char) * i + 1);
+	str = (char *)malloc(sizeof(char) * i + 2);
 	if (str == NULL)
 		return (NULL);
-	str[i--] = '\0';
+	ft_bzero(str, i-- + 2);
 	tmp = (unsigned long long)n;
 	if (data->precision != 0)
-		get_fractal(n, data, &i, str);
+		get_fractal(&n, data, &i, str);
 	else
 	{
-		if (n - (long double)tmp == 0.5 && tmp % 2 != 0)
+		if (!(n - (long double)tmp == 0.5 && tmp % 2 == 0))
 			n += 0.5;
 		if (data->hash == 1)
 			str[i--] = '.';
 	}
+	tmp = (unsigned long long)n;
 	while (tmp / 10 != 0)
 	{
 		str[i--] = tmp % 10 + '0';
@@ -101,19 +102,26 @@ int	ft_floatlen(long double n, t_data *data)
 	return i;
 }
 
-void	get_fractal(long double n, t_data *data, int *i, char *str)
+void	get_fractal(long double *n, t_data *data, int *i, char *str)
 {
 	int					j;
 	long double			fract;
 	unsigned long long	tmp;
 
 	j = 0;
-	fract = n - (long long)n;
+	fract = *n - (long long)*n;
 	while (j++ < data->precision)
 		fract *= 10;
 	fract += 0.5;
 	tmp = (unsigned long long)fract;
 	j--;
+	if (ft_longlen((long long)fract) > j && tmp != 0)
+	{
+		tmp = 0;
+		*n += 1;
+		*i += 1;
+	}
+
 	while (tmp / 10 != 0)
 	{
 		str[*i] = tmp % 10 + '0';

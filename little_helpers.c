@@ -42,6 +42,9 @@ void	clear_data(t_data *data)
 	data->mod_l = 0;
 	data->mod_ll = 0;
 	data->mod_ld = 0;
+	data->signed_mod = 0;
+	data->unsigned_mod = 0;
+	data->float_mod = 0.0;
 	data->conversion = 0;
 }
 
