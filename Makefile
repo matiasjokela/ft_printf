@@ -15,10 +15,10 @@ SRCS = checking_and_dispatching.c ft_printf.c little_helpers.c print_char.c \
 print_float.c print_hex.c print_int.c print_modulo.c print_octal.c \
 print_pointer.c print_string.c print_uint.c reading.c
 
-HEADER = ft_printf.h
+HEADER = ./includes/ft_printf.h
 LIBFT = libft/libft.a
 O_FILES = $(SRCS:.c=.o)
-LIBFT_O_FILES = $(wildcard libft/*.o)
+#LIBFT_O_FILES = $(wildcard libft/*.o)
 
 .PHONY: all clean fclean re
 
@@ -26,8 +26,9 @@ all: $(NAME)
 
 $(NAME):
 	cd ./libft/ && $(MAKE) && cd ..
+	@cp ./libft/libft.a ./$(NAME)
 	gcc -c -Wall -Werror -Wextra $(HEADER) $(SRCS);
-	ar rc $(NAME) $(O_FILES) $(LIBFT_O_FILES);
+	ar rc $(NAME) $(O_FILES);
 	ranlib $(NAME);
 
 clean:
