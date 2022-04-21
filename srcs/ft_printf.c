@@ -53,7 +53,7 @@ void	read_and_write(const char *format, va_list ap, t_data *data)
 			break ;
 		}
 		if (convert(format, &i, data) == 1)
-			dispatch(data, ap);
+			dispatch(data, ap);		
 	}
 }
 

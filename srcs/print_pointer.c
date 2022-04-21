@@ -22,12 +22,12 @@ void	print_pointer(t_data *data, va_list ap)
 	data->unsigned_mod = (unsigned long long)va_arg(ap, unsigned long long);
 	arg = data->unsigned_mod;
 	pstr = ft_ltoau_base(arg, 16, data);
-	len = ft_strlen(pstr);
+	len = ft_strlen(pstr) + 2;
 	if (data->width > len)
 		len = data->width;
 	if (data->precision > len)
 		len = data->precision;
-	if (len != data->width)
+	if (len == data->precision)
 		len += 2;
 	if (data->width == 0 && data->precision == 0 && arg == 0)
 		len = 2;

@@ -14,6 +14,8 @@
 
 int	isvalid(const char *format, int i)
 {
+	if (format[i] == '\0')
+		return (0);
 	while (ft_strchr(CONVERSION, format[i]) == NULL)
 	{
 		if (ft_strchr(SPECIFIERS, format[i]) == NULL || format[i] == '\0')
