@@ -10,17 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "./includes/ft_printf.h"
 
 int main(void)
 {
 
 
 
-	// -0 inputiin tehtävä is_negative funktio
+	ft_printf("%.1f\n", 43.15);
+	printf("%.1f\n", 43.15);
 
-int real_return;
-	int my_return = 0;
+	//int real_return;
+	//int my_return = 0;
 
 
 /*
@@ -41,7 +42,7 @@ int real_return;
 
 	//**********//
 
-
+/*
 	ft_putendl("\n\n * * * * * * * * * * DOUBLE - conversion fF:  * * * * * * * * * *\n");
 
 	ft_putendl("\nInput: %.6f");
@@ -332,7 +333,7 @@ int real_return;
 
 	
 	
-	
+	*/
 
 
 }

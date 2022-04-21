@@ -11,33 +11,37 @@
 # **************************************************************************** #
 
 NAME = libftprintf.a
-SRCS = checking_and_dispatching.c ft_printf.c little_helpers.c print_char.c \
-print_float.c print_hex.c print_int.c print_modulo.c print_octal.c \
-print_pointer.c print_string.c print_uint.c reading.c
+SRC_DIR = ./srcs/
+SRC_FILES = checking_and_dispatching.c ft_printf.c \
+little_helpers.c print_char.c print_float.c print_hex.c print_int.c \
+print_modulo.c print_octal.c print_pointer.c print_string.c \
+print_uint.c reading.c
+SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
 
 HEADER = ./includes/ft_printf.h
-LIBFT = libft/libft.a
-O_FILES = $(SRCS:.c=.o)
-#LIBFT_O_FILES = $(wildcard libft/*.o)
+O_FILES = $(SRC_FILES:.c=.o)
 
 .PHONY: all clean fclean re
 
 all: $(NAME)
 
 $(NAME):
-	cd ./libft/ && $(MAKE) && cd ..
-	@cp ./libft/libft.a ./$(NAME)
-	gcc -c -Wall -Werror -Wextra $(HEADER) $(SRCS);
-	ar rc $(NAME) $(O_FILES);
-	ranlib $(NAME);
+	@cd ./libft/ && $(MAKE) && cd ..;
+	@cp ./libft/libft.a ./$(NAME);
+	@gcc -c -Wall -Werror -Wextra $(HEADER) $(SRCS);
+	@ar rc $(NAME) $(O_FILES);
+	@mv $(O_FILES) $(SRC_DIR)
+	@ranlib $(NAME);
 
 clean:
-	cd ./libft/ && $(MAKE) clean && cd ..
-	rm -f $(O_FILES)  ft_printf.h.gch;
+	@cd ./libft/ && $(MAKE) clean && cd ..;
+	@cd ./srcs/ && rm -f $(O_FILES) && cd ..;
+	@rm -f ./srcs/$(O_FILES) ./includes/ft_printf.h.gch;
 	
 
 fclean:
-	cd ./libft/ && $(MAKE) fclean && cd ..
-	rm -f $(O_FILES) $(NAME) ft_printf.h.gch;
+	@cd ./libft/ && $(MAKE) fclean && cd ..;
+	@cd ./srcs/ && rm -f $(O_FILES) && cd ..;
+	@rm -f $(NAME) ./includes/ft_printf.h.gch;
 
 re: fclean all

@@ -43,14 +43,14 @@ ft_fill_array.o ft_free_array.o
 all: $(NAME)
 
 $(NAME):
-	gcc -c -Wall -Werror -Wextra $(HEADER) $(SRCS);
-	ar rc $(NAME) $(O_FILES);
-	ranlib $(NAME);
+	@gcc -c -Wall -Werror -Wextra $(HEADER) $(SRCS);
+	@ar rc $(NAME) $(O_FILES);
+	@ranlib $(NAME);
 
 clean:
-	rm -f $(O_FILES)  libft.h.gch;
+	@rm -f $(O_FILES)  libft.h.gch;
 
 fclean:	
-	rm -f $(O_FILES) $(NAME) libft.h.gch;
+	@rm -f $(O_FILES) $(NAME) libft.h.gch;
 
 re: fclean all
