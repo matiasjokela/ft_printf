@@ -1,1 +1,1 @@
-gcc *.c -L./libft/ -lft && ./a.out
+make && make fclean && ./a.out

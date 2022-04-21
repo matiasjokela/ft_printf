@@ -23,11 +23,11 @@ void	print_uint(t_data *data, va_list ap)
 	arg = data->unsigned_mod;
 	if (arg == 0 && data->precision == 0 && data->width == 0)
 		return ;
+	num_str = ft_ltoau_base(arg, 10, data);
+	len = arg_len_uint(data, arg, num_str);
 	print = (char *)malloc(sizeof(char) * (len * 2));
 	if (print == NULL)
 		exit(-1);
-	num_str = ft_ltoau_base(arg, 10, data);
-	len = arg_len_uint(data, arg, num_str);
 	set_padding_uint(data, print, num_str, len);
 	write_print(data, print, len, 0);
 	free(num_str);

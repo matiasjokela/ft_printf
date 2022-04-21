@@ -49,7 +49,7 @@ void	read_and_write(const char *format, va_list ap, t_data *data)
 			data->total_len += mod - &format[i];
 			break ;
 		}
-		if (convert(format, &i, data, ap) == 1)
+		if (convert(format, &i, data) == 1)
 			dispatch(data, ap);
 	}
 }

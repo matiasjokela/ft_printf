@@ -85,7 +85,7 @@ void	read_modifiers(const char *format, int *i, t_data *data)
 		*i += 1;
 }
 
-int	convert(const char *format, int *i, t_data *data, va_list ap)
+int	convert(const char *format, int *i, t_data *data)
 {
 	clear_data(data);
 	*i += 1;

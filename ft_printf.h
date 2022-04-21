@@ -49,7 +49,7 @@ typedef struct s_data
 }			t_data;
 
 int			ft_printf(const char *format, ...);
-int			convert(const char *format, int *i, t_data *data, va_list ap);
+int			convert(const char *format, int *i, t_data *data);
 int			isvalid(const char *format, int i);
 void		clear_data(t_data *data);
 void		read_data(const char *format, int *i, t_data *data);
