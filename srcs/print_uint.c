@@ -14,9 +14,9 @@
 
 void	print_uint(t_data *data, va_list ap)
 {
-	long long	len;
-	char		*print;
-	char		*num_str;
+	long long			len;
+	char				*print;
+	char				*num_str;
 	unsigned long long	arg;
 
 	check_length_mod_uint(data, ap);
@@ -51,6 +51,7 @@ void	check_length_mod_uint(t_data *data, va_list ap)
 	if (data->conversion == 'u')
 		data->hash = 0;
 }
+
 long long	arg_len_uint(t_data *data, long long arg, char *oct_str)
 {
 	long long	len;

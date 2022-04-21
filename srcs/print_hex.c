@@ -55,10 +55,9 @@ void	set_padding_hex(t_data *data, char *print, char *num_str, int len)
 			print[1] = data->conversion;
 		if (data->zero == 1)
 			return ;
-		if (precision > 0)
-			i = len - i - precision;
-		else
-			i = len - i;
+		if (precision < 0)
+			precision = 0;
+		i = len - i - precision;
 		print[i - 2] = '0';
 		print[i - 1] = data->conversion;
 	}

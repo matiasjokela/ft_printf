@@ -56,7 +56,6 @@ void		read_data(const char *format, int *i, t_data *data);
 void		read_flags(const char *format, int *i, t_data *data);
 void		read_dimensions(const char *format, int *i, t_data *data);
 void		read_modifiers(const char *format, int *i, t_data *data);
-void		print_data(t_data *data);												//REMOVE
 void		ft_putchar_pro(unsigned char c, t_data *data, int i);
 void		dispatch(t_data *data, va_list ap);
 void		print_int(t_data *data, va_list ap);
@@ -93,6 +92,6 @@ long long	arg_len_float(t_data *data, char *float_str);
 void		set_padding_float(t_data *data, char *print, char *fstr, int len);
 void		write_print_float(t_data *data, char *print, int len, int i);
 int			double_is_negative(double n);
-
+void		fill_str(unsigned long long tmp, int *i, int j, char *str);
 
 #endif

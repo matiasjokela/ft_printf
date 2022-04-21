@@ -14,9 +14,9 @@
 
 void	print_pointer(t_data *data, va_list ap)
 {
-	long long	len;
-	char		*print;
-	char		*pstr;
+	long long			len;
+	char				*print;
+	char				*pstr;
 	unsigned long long	arg;
 
 	data->unsigned_mod = (unsigned long long)va_arg(ap, unsigned long long);

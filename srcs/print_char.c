@@ -29,7 +29,7 @@ void	print_char(t_data *data, va_list ap)
 	data->total_len += len;
 	print = (char *)malloc(sizeof(char) * (len * 2));
 	if (print == NULL)
-		exit(-1);	
+		exit(-1);
 	if (data->zero == 1)
 		ft_memset(print, '0', len * 2);
 	else

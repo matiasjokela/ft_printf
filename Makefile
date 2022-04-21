@@ -15,7 +15,7 @@ SRC_DIR = ./srcs/
 SRC_FILES = checking_and_dispatching.c ft_printf.c \
 little_helpers.c print_char.c print_float.c print_hex.c print_int.c \
 print_modulo.c print_octal.c print_pointer.c print_string.c \
-print_uint.c reading.c
+print_uint.c reading.c float_helpers.c
 SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
 
 HEADER = ./includes/ft_printf.h

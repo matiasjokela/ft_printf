@@ -1,1 +1,1 @@
-make && make fclean && ./a.out
+rm -f ./a.out && make re && make clean && gcc main.c -L. -lftprintf && ./a.out

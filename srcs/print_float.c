@@ -31,33 +31,6 @@ void	print_float(t_data *data, va_list ap)
 	write_print_float(data, print, len, 0);
 	free(float_str);
 	free(print);
-
-
-	
-}
-
-long double	check_length_mod_float(t_data *data, va_list ap)
-{
-	if (data->mod_ld == 1)
-		data->float_mod = (long double)va_arg(ap, long double);
-	else
-		data->float_mod = (double)va_arg(ap, double);
-	return (data->float_mod);
-}
-
-char	*get_float_str(t_data *data, long double arg)
-{
-	char	*float_str;
-
-	if (arg < 0)
-	{
-		data->blank = 0;
-		data->plus = 0;
-		float_str = ft_dtoa(arg * -1.0, data);
-	}
-	else
-		float_str = ft_dtoa(arg, data);
-	return (float_str);
 }
 
 char	*ft_dtoa(long double n, t_data *data)
@@ -82,24 +55,8 @@ char	*ft_dtoa(long double n, t_data *data)
 			str[i--] = '.';
 	}
 	tmp = (unsigned long long)n;
-	while (tmp / 10 != 0)
-	{
-		str[i--] = tmp % 10 + '0';
-		tmp = tmp / 10;
-	}
-	str[i] = tmp % 10 + '0';
+	fill_str(tmp, &i, 0, str);
 	return (str);
-}
-
-int	ft_floatlen(long double n, t_data *data)
-{
-	long long	i;
-
-	i = 0;
-	i += ft_longlen(n / 1);
-	if (!(data->precision == 0 && data->hash == 0))
-		i += data->precision + 1;
-	return i;
 }
 
 void	get_fractal(long double *n, t_data *data, int *i, char *str)
@@ -121,39 +78,9 @@ void	get_fractal(long double *n, t_data *data, int *i, char *str)
 		*n += 1;
 		*i += 1;
 	}
-
-	while (tmp / 10 != 0)
-	{
-		str[*i] = tmp % 10 + '0';
-		tmp = tmp / 10;
-		*i -= 1;
-		j--;
-	}
-	str[*i] = tmp % 10 + '0';
-	*i -= 1;
-	j--;
-	while (j > 0)
-	{
-		str[*i] = '0';
-		*i -= 1;
-		j--;
-	}
+	fill_str(tmp, i, j, str);
 	str[*i] = '.';
 	*i -= 1;
-}
-
-long long	arg_len_float(t_data *data, char *float_str)
-{
-	long long	len;
-
-	len = ft_strlen(float_str);
-	if (data->width > len)
-		len = data->width;
-	if (len != data->width && (double_is_negative(data->float_mod) == 1 \
-	|| data->plus == 1 || data->blank == 1))
-		len++;
-	data->total_len += len;
-	return (len);
 }
 
 void	set_padding_float(t_data *data, char *print, char *fstr, int len)
@@ -195,12 +122,4 @@ void	write_print_float(t_data *data, char *print, int len, int i)
 		else
 			write(1, print, len);
 	}
-}
-
-int	double_is_negative(double n)
-{
-	unsigned long long	*tmp;
-
-	tmp = (unsigned long long *)&n;
-	return ((int)(*tmp >> 63));
 }

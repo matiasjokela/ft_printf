@@ -16,6 +16,7 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	t_data	*data;
+	int		len;
 
 	va_start(ap, format);
 	data = (t_data *)malloc(sizeof(t_data));
@@ -24,7 +25,9 @@ int	ft_printf(const char *format, ...)
 	data->total_len = 0;
 	read_and_write(format, ap, data);
 	va_end(ap);
-	return (data->total_len);
+	len = data->total_len;
+	free(data);
+	return (len);
 }
 
 void	read_and_write(const char *format, va_list ap, t_data *data)

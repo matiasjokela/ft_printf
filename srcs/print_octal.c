@@ -56,4 +56,3 @@ char	*ft_ltoau_base(unsigned long long n, int base, t_data *data)
 	stri[i] = hex[n % base];
 	return (ft_strdup(&stri[i]));
 }
-
