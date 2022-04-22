@@ -93,5 +93,6 @@ void		set_padding_float(t_data *data, char *print, char *fstr, int len);
 void		write_print_float(t_data *data, char *print, int len, int i);
 int			double_is_negative(double n);
 void		fill_str(unsigned long long tmp, int *i, int j, char *str);
+int			count_non_blanks(char *print);
 
 #endif

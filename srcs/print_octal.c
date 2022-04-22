@@ -29,6 +29,8 @@ void	print_octal(t_data *data, va_list ap)
 	if (print == NULL)
 		exit(-1);
 	set_padding_uint(data, print, oct_str, len);
+	if (count_non_blanks(print) == 0)
+		data->minus = 0;
 	write_print(data, print, len, 0);
 	free(oct_str);
 	free(print);

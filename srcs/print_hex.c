@@ -18,9 +18,11 @@ void	print_hex(t_data *data, va_list ap)
 	char				*print;
 	char				*oct_str;
 	unsigned long long	arg;
+	int					non_blank;
 
 	check_length_mod_uint(data, ap);
 	arg = data->unsigned_mod;
+	non_blank = 0;
 	if (arg == 0 && data->precision == 0 && data->width == 0)
 		return ;
 	oct_str = ft_ltoau_base(arg, 16, data);
@@ -29,6 +31,8 @@ void	print_hex(t_data *data, va_list ap)
 	if (print == NULL)
 		exit(-1);
 	set_padding_hex(data, print, oct_str, len);
+	if (count_non_blanks(print) == 0)
+		data->minus = 0;
 	write_print(data, print, len, 0);
 	free(oct_str);
 	free(print);
@@ -78,4 +82,20 @@ long long	arg_len_hex(t_data *data, long long arg, char *oct_str)
 			len += 2;
 	data->total_len += len;
 	return (len);
+}
+
+int	count_non_blanks(char *print)
+{
+	int	i;
+	int	non_blank;
+
+	i = 0;
+	non_blank = 0;
+	while (print[i] != '\0')
+	{
+		if (print[i] != ' ')
+			non_blank++;
+		i++;
+	}
+	return (non_blank);
 }
