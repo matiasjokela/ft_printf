@@ -28,8 +28,8 @@ void	print_int(t_data *data, va_list ap)
 	if (print == NULL)
 		exit(-1);
 	set_padding(data, print, num_str, len);
-	if (count_non_blanks(print) != 0)
-		data->minus = 0;
+	if (count_non_blanks(print) == 0)
+		data->zero = 1;
 	write_print(data, print, len, 0);
 	free(num_str);
 	free(print);
