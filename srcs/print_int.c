@@ -28,7 +28,7 @@ void	print_int(t_data *data, va_list ap)
 	if (print == NULL)
 		exit(-1);
 	set_padding(data, print, num_str, len);
-	if (count_non_blanks(print) == 0)
+	if (count_non_blanks(print) != 0)
 		data->minus = 0;
 	write_print(data, print, len, 0);
 	free(num_str);
@@ -79,7 +79,8 @@ long long	arg_len_int(t_data *data, long long arg)
 	if (len == data->precision && arg < 0)
 		len++;
 	if ((data->blank == 1 || data->plus == 1) && (len == ft_intlen(arg) \
-	|| len == data->precision))
+	|| len == data->precision) && \
+	!(arg == 0 && data->precision == 0 && data->width == 1))
 		len++;
 	data->total_len += len;
 	return (len);
