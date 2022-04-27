@@ -15,15 +15,16 @@
 int main(void)
 {
 	/*
-	specs_one_int("Test %%#-1.0o: {%#-1.0o}", 0); wrong
-	specs_one_int("Test %%#-1.0u: {%#-1.0u}", 0);
-	specs_one_int("Test %%#-1.0x: {%#-1.0x}", 0);
-	specs_one_int("Test %%#-1.0X: {%#-1.0X}", 0);
+		specs_one_dbl("Test %%010f: {%010f}\n", values[i]);
+		specs_one_dbl("Test %%#010f: {%#010f}\n", values[i]);
+		specs_one_dbl("Test %%0#10.1f: {%0#10.1f}\n", values[i]);
+		specs_one_dbl("Test %%0 10f: {%0 10f}\n", values[i]);
+		specs_one_dbl("Test %%+010f: {%+010f}\n", values[i]);
 */
 
 
-	printf("return: %d\n", ft_printf("Test %%#-1.0u: {%#-1.0o}", 0));
-	printf("return: %d\n", printf("Test %%#-1.0u: {%#-1.0o}", 0));
+	printf("return: %d\n", ft_printf("Test %%0 f: {%0 f}\n", -0.000000));
+	printf("return: %d\n", printf("Test %%0 f: {%0 f}\n", -0.000000));
 
 
 }
