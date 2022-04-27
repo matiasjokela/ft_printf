@@ -29,6 +29,8 @@ void	print_octal(t_data *data, va_list ap)
 	if (print == NULL)
 		exit(-1);
 	set_padding_octal(data, print, oct_str, len);
+	if (count_non_blanks(print) == 0)
+		data->zero = 1;
 	write_print(data, print, len, 0);
 	free(oct_str);
 	free(print);
@@ -68,7 +70,9 @@ void	set_padding_octal(t_data *data, char *print, char *o_str, int len)
 		ft_memset(print, '0', len * 2);
 	else
 		ft_memset(print, ' ', len * 2);
-	ft_memcpy(&print[len - i], o_str, i);
+	if (!(data->precision == 0 && data->unsigned_mod == 0 && data->width != 0 \
+	&& data->hash == 0))
+		ft_memcpy(&print[len - i], o_str, i);
 	if (data->hash == 1)
 		print[len - i - 1] = '0';
 	if (precision > 0)

@@ -69,7 +69,9 @@ void	get_fractal(long double *n, t_data *data, int *i, char *str)
 	fract = *n - (long long)*n;
 	while (j++ < data->precision)
 		fract *= 10;
-	fract += 0.5;
+	tmp = (unsigned long long)fract;
+	if (!(fract - tmp == 0.5 && tmp % 2 == 0))
+		fract += 0.5;
 	tmp = (unsigned long long)fract;
 	j--;
 	if (ft_longlen((long long)fract) > j && tmp != 0)
