@@ -21,6 +21,7 @@ int main(void)
 	specs_one_int("Test %%#-1.0X: {%#-1.0X}", 0);
 */
 
+
 	printf("return: %d\n", ft_printf("Test %%#-1.0u: {%#-1.0o}", 0));
 	printf("return: %d\n", printf("Test %%#-1.0u: {%#-1.0o}", 0));
 
