@@ -28,9 +28,7 @@ void	print_octal(t_data *data, va_list ap)
 	print = (char *)malloc(sizeof(char) * (len * 2));
 	if (print == NULL)
 		exit(-1);
-	set_padding_uint(data, print, oct_str, len);
-	if (count_non_blanks(print) == 0)
-		data->zero = 1;
+	set_padding_octal(data, print, oct_str, len);
 	write_print(data, print, len, 0);
 	free(oct_str);
 	free(print);
@@ -57,4 +55,22 @@ char	*ft_ltoau_base(unsigned long long n, int base, t_data *data)
 	}
 	stri[i] = hex[n % base];
 	return (ft_strdup(&stri[i]));
+}
+
+void	set_padding_octal(t_data *data, char *print, char *o_str, int len)
+{
+	int	i;
+	int	precision;
+
+	i = ft_strlen(o_str);
+	precision = data->precision - i;
+	if (data->zero == 1)
+		ft_memset(print, '0', len * 2);
+	else
+		ft_memset(print, ' ', len * 2);
+	ft_memcpy(&print[len - i], o_str, i);
+	if (data->hash == 1)
+		print[len - i - 1] = '0';
+	if (precision > 0)
+		ft_memset(&print[len - i - precision], '0', precision);
 }
