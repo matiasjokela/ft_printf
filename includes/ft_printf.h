@@ -95,5 +95,6 @@ int			double_is_negative(double n);
 void		fill_str(unsigned long long tmp, int *i, int j, char *str);
 void		set_padding_octal(t_data *data, char *print, char *o_str, int len);
 int			count_non_blanks(char *print);
+void		copy_printable(char *dst, char const *src, int len);
 
 #endif

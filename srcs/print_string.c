@@ -19,10 +19,11 @@ void	print_string(t_data *data, va_list ap)
 	char		*str;
 
 	data->unsigned_mod = (unsigned long long)va_arg(ap, unsigned long long);
-	if ((char *)data->unsigned_mod == 0)
+	str = (char *)data->unsigned_mod;
+	if (data->unsigned_mod == 0 && data->precision == 0)
+		str = "";
+	else if (data->unsigned_mod == 0)
 		str = "(null)";
-	else
-		str = (char *)data->unsigned_mod;
 	len = ft_strlen(str);
 	if (data->precision != -1 && data->precision < len)
 		len = data->precision;
@@ -33,7 +34,7 @@ void	print_string(t_data *data, va_list ap)
 	if (print == NULL)
 		exit(-1);
 	set_padding_str(data, print, str, len);
-	if (ft_strcmp(str, "") == 0)
+	if (ft_strcmp(str, "") == 0 || data->precision == 0)
 		write(1, print, len);
 	else
 		write_print(data, print, len, 0);
@@ -56,4 +57,19 @@ void	set_padding_str(t_data *data, char *print, char *str, int len)
 	else
 		ft_memset(print, ' ', len * 2);
 	ft_memcpy(&print[len - i], str, i);
+}
+
+void	copy_printable(char *dst, char const *src, int len)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (i < len && src[i] != '\0')
+	{
+		if (src[i] > 31)
+			dst[j++] = src[i];
+		i++;
+	}
 }

@@ -22,9 +22,24 @@ int main(void)
 		specs_one_dbl("Test %%+010f: {%+010f}\n", values[i]);
 */
 
+	char s[4];
 
-	printf("return: %d\n", ft_printf("Test %%0 f: {%0 f}\n", -0.000000));
-	printf("return: %d\n", printf("Test %%0 f: {%0 f}\n", -0.000000));
+	s[0] = 'j';
+	s[1] = 6;
+	s[2] = 'j';
+	s[3] = 0;
+
+	/*Non printable characters don't work*/
+
+	printf("return: %d\n", ft_printf("%-2c", s[1]));
+	printf("return: %d\n", printf("%-2c", s[1]));
+
+
+
+
+
+	//printf("return: %d\n", ft_printf("%0s", NULL));
+	//printf("return: %d\n", printf("%0s", NULL));
 
 
 }
