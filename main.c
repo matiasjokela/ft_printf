@@ -14,32 +14,12 @@
 
 int main(void)
 {
-	/*
-		specs_one_dbl("Test %%010f: {%010f}\n", values[i]);
-		specs_one_dbl("Test %%#010f: {%#010f}\n", values[i]);
-		specs_one_dbl("Test %%0#10.1f: {%0#10.1f}\n", values[i]);
-		specs_one_dbl("Test %%0 10f: {%0 10f}\n", values[i]);
-		specs_one_dbl("Test %%+010f: {%+010f}\n", values[i]);
-*/
 
-	char s[4];
+	//wildcards
+	//colors
+	//print bits
+	//print to file
 
-	s[0] = '\0';
-	s[1] = 'f';
-	s[2] = 'j';
-	s[3] = 0;
-
-	/*Non printable characters don't work*/
-
-	printf("return: %d\n", ft_printf("%-5c", s[0]));
-	printf("return: %d\n", printf("%-5c", s[0]));
-
-
-
-
-
-	//printf("return: %d\n", ft_printf("%0s", NULL));
-	//printf("return: %d\n", printf("%0s", NULL));
-
+	//speed optimisation
 
 }
