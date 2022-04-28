@@ -24,15 +24,15 @@ int main(void)
 
 	char s[4];
 
-	s[0] = 'j';
-	s[1] = 6;
+	s[0] = '\0';
+	s[1] = 'f';
 	s[2] = 'j';
 	s[3] = 0;
 
 	/*Non printable characters don't work*/
 
-	printf("return: %d\n", ft_printf("%-2c", s[1]));
-	printf("return: %d\n", printf("%-2c", s[1]));
+	printf("return: %d\n", ft_printf("%-5c", s[0]));
+	printf("return: %d\n", printf("%-5c", s[0]));
 
 
 

@@ -32,7 +32,7 @@ void	print_hex(t_data *data, va_list ap)
 		exit(-1);
 	set_padding_hex(data, print, oct_str, len);
 	if (count_non_blanks(print) == 0)
-		data->minus = 0;
+		data->zero = 1;
 	write_print(data, print, len, 0);
 	free(oct_str);
 	free(print);
