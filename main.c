@@ -20,6 +20,9 @@ int main(void)
 	//print bits
 	//print to file
 
+
 	//speed optimisation
+
+	
 
 }
