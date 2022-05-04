@@ -43,6 +43,8 @@ void	dispatch(t_data *data, va_list ap)
 		print_pointer(data, ap);
 	else if (data->conversion == 's')
 		print_string(data, ap);
+	else if (data->conversion == 'b')
+		print_bits(data, ap);
 	else if (data->conversion == 'f' || data->conversion == 'F')
 		print_float(data, ap);
 }

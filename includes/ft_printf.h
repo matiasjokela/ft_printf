@@ -19,7 +19,7 @@
 
 # define FLAGS "#0- +"
 # define SPECIFIERS "#0-+ .*0123456789hlL"
-# define CONVERSION "cspdiouxXf%"
+# define CONVERSION "cspdiouxXf%b"
 
 typedef struct s_data
 {
@@ -96,5 +96,6 @@ void		fill_str(unsigned long long tmp, int *i, int j, char *str);
 void		set_padding_octal(t_data *data, char *print, char *o_str, int len);
 int			count_non_blanks(char *print);
 void		copy_printable(char *dst, char const *src, int len);
+void		print_bits(t_data *data, va_list ap);
 
 #endif
