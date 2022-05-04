@@ -44,12 +44,10 @@ void	print_string(t_data *data, va_list ap)
 void	set_padding_str(t_data *data, char *print, char *str, int len)
 {
 	int	i;
-	int	precision;
 
 	i = ft_strlen(str);
 	if (data->precision != -1 && data->precision < i)
 		i = data->precision;
-	precision = data->precision - i;
 	data->blank = 0;
 	data->plus = 0;
 	if (data->zero == 1)

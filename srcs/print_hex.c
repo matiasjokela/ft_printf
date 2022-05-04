@@ -18,11 +18,9 @@ void	print_hex(t_data *data, va_list ap)
 	char				*print;
 	char				*oct_str;
 	unsigned long long	arg;
-	int					non_blank;
 
 	check_length_mod_uint(data, ap);
 	arg = data->unsigned_mod;
-	non_blank = 0;
 	if (arg == 0 && data->precision == 0 && data->width == 0)
 		return ;
 	oct_str = ft_ltoau_base(arg, 16, data);

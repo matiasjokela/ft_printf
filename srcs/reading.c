@@ -12,10 +12,10 @@
 
 #include "../includes/ft_printf.h"
 
-void	read_data(const char *format, int *i, t_data *data)
+void	read_data(const char *format, int *i, t_data *data, va_list ap)
 {
 	read_flags(format, i, data);
-	read_dimensions(format, i, data);
+	read_dimensions(format, i, data, ap);
 	read_modifiers(format, i, data);
 	data->conversion = format[*i];
 	*i += 1;
@@ -52,20 +52,37 @@ void	read_flags(const char *format, int *i, t_data *data)
 	}
 }
 
-void	read_dimensions(const char *format, int *i, t_data *data)
+void	read_dimensions(const char *form, int *i, t_data *data, va_list ap)
 {
-	if (format[*i] >= '0' && format[*i] <= '9')
+	if (form[*i] == '*')
 	{
-		data->width = ft_atoi(&format[*i]);
-		while (format[*i] >= '0' && format[*i] <= '9')
+		data->width = (int)va_arg(ap, int);
+		if (data->width < 0)
+			data->width *= -1;
+		*i += 1;
+	}
+	if (form[*i] >= '0' && form[*i] <= '9')
+	{
+		data->width = ft_atoi(&form[*i]);
+		while (form[*i] >= '0' && form[*i] <= '9')
 			*i += 1;
 	}
-	if (format[*i] == '.')
+	if (form[*i] == '.')
 	{
 		*i += 1;
-		data->precision = ft_atoi(&format[*i]);
-		while (format[*i] >= '0' && format[*i] <= '9')
+		if (form[*i] == '*')
+		{
+			data->precision = (int)va_arg(ap, int);
+			if (data->precision < 0)
+				data->precision = -1;
 			*i += 1;
+		}
+		else
+		{
+			data->precision = ft_atoi(&form[*i]);
+			while (form[*i] >= '0' && form[*i] <= '9')
+				*i += 1;
+		}
 	}
 }
 
@@ -85,12 +102,12 @@ void	read_modifiers(const char *format, int *i, t_data *data)
 		*i += 1;
 }
 
-int	convert(const char *format, int *i, t_data *data)
+int	convert(const char *format, int *i, t_data *data, va_list ap)
 {
 	clear_data(data);
 	*i += 1;
 	if (!isvalid(format, *i))
 		return (0);
-	read_data(format, i, data);
+	read_data(format, i, data, ap);
 	return (1);
 }

@@ -49,12 +49,12 @@ typedef struct s_data
 }			t_data;
 
 int			ft_printf(const char *format, ...);
-int			convert(const char *format, int *i, t_data *data);
+int			convert(const char *format, int *i, t_data *data, va_list ap);
 int			isvalid(const char *format, int i);
 void		clear_data(t_data *data);
-void		read_data(const char *format, int *i, t_data *data);
+void		read_data(const char *format, int *i, t_data *data, va_list ap);
 void		read_flags(const char *format, int *i, t_data *data);
-void		read_dimensions(const char *format, int *i, t_data *data);
+void		read_dimensions(const char *form, int *i, t_data *data, va_list ap);
 void		read_modifiers(const char *format, int *i, t_data *data);
 void		ft_putchar_pro(unsigned char c, t_data *data, int i);
 void		dispatch(t_data *data, va_list ap);

@@ -15,12 +15,10 @@
 char	*ft_itoa(int n)
 {
 	int			i;
-	int			j;
 	long int	k;
 	char		*stri;
 
 	i = ft_intlen(n);
-	j = 0;
 	k = n;
 	stri = (char *)malloc(sizeof(char) * i + 1);
 	if (stri == NULL)
