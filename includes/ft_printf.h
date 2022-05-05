@@ -20,6 +20,11 @@
 # define FLAGS "#0- +"
 # define SPECIFIERS "#0-+ .*0123456789hlL"
 # define CONVERSION "cspdiouxXf%b"
+# define RED "\e[0;91m"
+# define GREEN "\e[0;32m"
+# define YELLOW "\e[0;33m"
+# define BLUE "\e[0;34m"
+# define RESET "\e[0m"
 
 typedef struct s_data
 {

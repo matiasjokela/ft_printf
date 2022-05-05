@@ -15,15 +15,10 @@
 int main(void)
 {
 
-	//wildcards
-	//colors
-	//print bits
-	//print to file
 
-
-	//speed optimisation
-
-	ft_printf("{%*d}\n", -5, 42);
-	printf("{%*d}\n", -5, 42);
+	ft_printf("$ %stest%s $\n", RED, RESET);
+	ft_printf("$ %stest%s $\n", GREEN, RESET);
+	ft_printf("$ %stest%s $\n", YELLOW, RESET);
+	ft_printf("$ %stest%s $\n", BLUE, RESET);
 
 }
