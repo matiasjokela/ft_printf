@@ -23,6 +23,7 @@ int main(void)
 
 	//speed optimisation
 
-	ft_printf("%llb\n", 5);
+	ft_printf("{%*d}\n", -5, 42);
+	printf("{%*d}\n", -5, 42);
 
 }

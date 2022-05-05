@@ -58,7 +58,10 @@ void	read_dimensions(const char *form, int *i, t_data *data, va_list ap)
 	{
 		data->width = (int)va_arg(ap, int);
 		if (data->width < 0)
+		{
 			data->width *= -1;
+			data->minus = 1;
+		}
 		*i += 1;
 	}
 	if (form[*i] >= '0' && form[*i] <= '9')
