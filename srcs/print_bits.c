@@ -19,6 +19,7 @@ void	print_bits(t_data *data, va_list ap)
 		len = 64;
 	else
 		len = 32;
+	data -> total_len += len;
 	while (i < len)
 	{
 		arr[i] = (arg & 1);
