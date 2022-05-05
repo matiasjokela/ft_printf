@@ -102,5 +102,6 @@ void		set_padding_octal(t_data *data, char *print, char *o_str, int len);
 int			count_non_blanks(char *print);
 void		copy_printable(char *dst, char const *src, int len);
 void		print_bits(t_data *data, va_list ap);
+void		read_width(const char *form, int *i, t_data *data, va_list ap);
 
 #endif

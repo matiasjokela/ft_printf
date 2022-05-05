@@ -48,3 +48,13 @@ void	dispatch(t_data *data, va_list ap)
 	else if (data->conversion == 'f' || data->conversion == 'F')
 		print_float(data, ap);
 }
+
+int	convert(const char *format, int *i, t_data *data, va_list ap)
+{
+	clear_data(data);
+	*i += 1;
+	if (!isvalid(format, *i))
+		return (0);
+	read_data(format, i, data, ap);
+	return (1);
+}

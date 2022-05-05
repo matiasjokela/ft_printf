@@ -54,22 +54,7 @@ void	read_flags(const char *format, int *i, t_data *data)
 
 void	read_dimensions(const char *form, int *i, t_data *data, va_list ap)
 {
-	if (form[*i] == '*')
-	{
-		data->width = (int)va_arg(ap, int);
-		if (data->width < 0)
-		{
-			data->width *= -1;
-			data->minus = 1;
-		}
-		*i += 1;
-	}
-	if (form[*i] >= '0' && form[*i] <= '9')
-	{
-		data->width = ft_atoi(&form[*i]);
-		while (form[*i] >= '0' && form[*i] <= '9')
-			*i += 1;
-	}
+	read_width(form, i, data, ap);
 	if (form[*i] == '.')
 	{
 		*i += 1;
@@ -105,12 +90,22 @@ void	read_modifiers(const char *format, int *i, t_data *data)
 		*i += 1;
 }
 
-int	convert(const char *format, int *i, t_data *data, va_list ap)
+void	read_width(const char *form, int *i, t_data *data, va_list ap)
 {
-	clear_data(data);
-	*i += 1;
-	if (!isvalid(format, *i))
-		return (0);
-	read_data(format, i, data, ap);
-	return (1);
+	if (form[*i] == '*')
+	{
+		data->width = (int)va_arg(ap, int);
+		if (data->width < 0)
+		{
+			data->width *= -1;
+			data->minus = 1;
+		}
+		*i += 1;
+	}
+	if (form[*i] >= '0' && form[*i] <= '9')
+	{
+		data->width = ft_atoi(&form[*i]);
+		while (form[*i] >= '0' && form[*i] <= '9')
+			*i += 1;
+	}
 }
