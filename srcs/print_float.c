@@ -64,11 +64,22 @@ void	get_fractal(long double *n, t_data *data, int *i, char *str)
 	int					j;
 	long double			fract;
 	unsigned long long	tmp;
+	int					precision;
 
 	j = 0;
 	fract = *n - (long long)*n;
-	while (j++ < data->precision)
+	if (data->precision > 19)
+		precision = 19;
+	else
+		precision = data->precision;
+	while (j++ < precision)
 		fract *= 10;
+	while (precision < data->precision)
+	{
+		str[*i] = '0';
+		*i -= 1;
+		precision++;
+	}
 	tmp = (unsigned long long)fract;
 	if (!(fract - tmp == 0.5 && tmp % 2 == 0))
 		fract += 0.5;
