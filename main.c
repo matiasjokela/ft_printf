@@ -21,6 +21,14 @@ int main(void)
 	ft_printf("$ %stest%s $\n", YELLOW, RESET);
 	ft_printf("$ %stest%s $\n", BLUE, RESET);
 
+	// Cleanup to norm
+	// Check a test set with valgrind
+	// move to vox repo
+	// check again
+	// set finished
+
+
+/*
 int real_return;
 	int my_return = 0;
 
@@ -381,5 +389,5 @@ int real_return;
 	real_return = printf("Real  printf: %.3f $\n", 0.000500);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-
+*/
 }
