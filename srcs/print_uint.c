@@ -66,7 +66,7 @@ long long	arg_len_uint(t_data *data, long long arg, char *oct_str)
 	if (data->precision > len)
 		len = data->precision;
 	if (data->hash == 1 && len == strl && arg != 0)
-			len++;
+		len++;
 	data->total_len += len;
 	return (len);
 }

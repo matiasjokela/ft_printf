@@ -23,6 +23,8 @@ void	print_octal(t_data *data, va_list ap)
 	arg = data->unsigned_mod;
 	if (data->hash == 0 && arg == 0 && data->precision == 0 && data->width == 0)
 		return ;
+	if (arg == 0 && data->hash == 1)
+		data->hash = 2;
 	oct_str = ft_ltoau_base(arg, 8, data);
 	len = arg_len_uint(data, arg, oct_str);
 	print = (char *)malloc(sizeof(char) * (len * 2));
@@ -72,7 +74,10 @@ void	set_padding_octal(t_data *data, char *print, char *o_str, int len)
 		ft_memset(print, ' ', len * 2);
 	if (!(data->precision == 0 && data->unsigned_mod == 0 && data->width != 0 \
 	&& data->hash == 0))
+	{
 		ft_memcpy(&print[len - i], o_str, i);
+	}
+	//ft_memcpy(&print[len - i], o_str, i);
 	if (data->hash == 1)
 		print[len - i - 1] = '0';
 	if (precision > 0)

@@ -1,1 +1,0 @@
-rm -f ./a.out && make re && make clean && gcc main.c -g -L. -lftprintf && valgrind --leak-check=yes --leak-check=full ./a.out
