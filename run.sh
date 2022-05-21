@@ -1,1 +1,1 @@
-rm -f ./a.out && make re && make clean && gcc main.c -L. -lftprintf && ./a.out
+rm -f ./a.out && make re && make clean && gcc main.c -g -fsanitize=address -L. -lftprintf && ./a.out

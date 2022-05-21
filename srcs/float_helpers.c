@@ -49,12 +49,11 @@ long long	arg_len_float(t_data *data, char *float_str)
 	long long	len;
 
 	len = ft_strlen(float_str);
-	if (double_is_negative(data->float_mod) == 1)
+	if (double_is_negative(data->float_mod) == 1 || data->plus == 1 || \
+	data->blank == 1)
 		len++;
 	if (data->width > len)
 		len = data->width;
-	if (len != data->width && (data->plus == 1 || data->blank == 1))
-		len++;
 	data->total_len += len;
 	return (len);
 }

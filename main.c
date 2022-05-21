@@ -15,17 +15,20 @@
 int main(void)
 {
 
-
+/*
 	ft_printf("$ %stest%s $\n", RED, RESET);
 	ft_printf("$ %stest%s $\n", GREEN, RESET);
 	ft_printf("$ %stest%s $\n", YELLOW, RESET);
 	ft_printf("$ %stest%s $\n", BLUE, RESET);
-
+*/
 	// Cleanup to norm
 	// Check a test set with valgrind
 	// move to vox repo
 	// check again
 	// set finished
+	//ft_printf("%+4.1f\n", 42.0);
+	ft_printf("% 4.1f\n", 42.0);
+	
 
 
 /*
