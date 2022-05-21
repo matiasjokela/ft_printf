@@ -35,7 +35,7 @@ void	print_char(t_data *data, va_list ap)
 	else
 		ft_memset(print, ' ', len * 2);
 	print[len - 1] = c;
-	if (count_non_blanks(print) == 0 && c != 0)
+	if (has_non_blanks(print, len) == 0 && c != 0)
 		data->zero = 1;
 	write_print(data, print, len, 0);
 	free(print);

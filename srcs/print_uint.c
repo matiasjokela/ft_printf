@@ -29,7 +29,7 @@ void	print_uint(t_data *data, va_list ap)
 	if (print == NULL)
 		exit(-1);
 	set_padding_uint(data, print, num_str, len);
-	if (count_non_blanks(print) == 0)
+	if (has_non_blanks(print, len) == 0)
 		data->minus = 0;
 	write_print(data, print, len, 0);
 	free(num_str);

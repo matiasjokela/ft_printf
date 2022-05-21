@@ -29,7 +29,7 @@ void	print_hex(t_data *data, va_list ap)
 	if (print == NULL)
 		exit(-1);
 	set_padding_hex(data, print, oct_str, len);
-	if (count_non_blanks(print) == 0)
+	if (has_non_blanks(print, len) == 0)
 		data->zero = 1;
 	write_print(data, print, len, 0);
 	free(oct_str);
@@ -82,18 +82,18 @@ long long	arg_len_hex(t_data *data, long long arg, char *oct_str)
 	return (len);
 }
 
-int	count_non_blanks(char *print)
+int	has_non_blanks(char *print, long long len)
 {
-	int	i;
-	int	non_blank;
+	long long	i;
+	long long	limit;
 
 	i = 0;
-	non_blank = 0;
-	while (print[i] != '\0')
+	limit = 2 * len;
+	while (i < limit)
 	{
 		if (print[i] != ' ')
-			non_blank++;
+			return (1);
 		i++;
 	}
-	return (non_blank);
+	return (0);
 }

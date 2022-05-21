@@ -29,7 +29,7 @@ void	print_octal(t_data *data, va_list ap)
 	if (print == NULL)
 		exit(-1);
 	set_padding_octal(data, print, oct_str, len);
-	if (count_non_blanks(print) == 0)
+	if (has_non_blanks(print, len) == 0)
 		data->zero = 1;
 	write_print(data, print, len, 0);
 	free(oct_str);
