@@ -23,6 +23,8 @@ void	print_hex(t_data *data, va_list ap)
 	arg = data->unsigned_mod;
 	if (arg == 0 && data->precision == 0 && data->width == 0)
 		return ;
+	if (arg == 0 && data->hash == 1)
+		data->hash = 2;
 	oct_str = ft_ltoau_base(arg, 16, data);
 	len = arg_len_hex(data, arg, oct_str);
 	print = (char *)malloc(sizeof(char) * (len * 2));
