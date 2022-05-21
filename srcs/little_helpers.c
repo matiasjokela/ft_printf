@@ -44,6 +44,7 @@ void	clear_data(t_data *data)
 	data->mod_ld = 0;
 	data->signed_mod = 0;
 	data->unsigned_mod = 0;
+	data->double_is_negative = 0;
 	data->float_mod = 0.0;
 	data->conversion = 0;
 }
@@ -65,5 +66,23 @@ void	fill_str(unsigned long long tmp, int *i, int j, char *str)
 		str[*i] = '0';
 		*i -= 1;
 		j--;
+	}
+}
+
+int	get_true_precision(t_data *data)
+{
+	if (data->precision > 19)
+		return (19);
+	else
+		return (data->precision);
+}
+
+void	pad_with_zeros(int precision, t_data *data, int *i, char *str)
+{
+	while (precision < data->precision)
+	{
+		str[*i] = '0';
+		*i -= 1;
+		precision++;
 	}
 }

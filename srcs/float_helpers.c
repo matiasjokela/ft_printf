@@ -25,7 +25,7 @@ char	*get_float_str(t_data *data, long double arg)
 {
 	char	*float_str;
 
-	if (double_is_negative(arg) == 1)
+	if (data->double_is_negative == 1)
 	{
 		data->blank = 0;
 		data->plus = 0;
@@ -49,7 +49,7 @@ long long	arg_len_float(t_data *data, char *float_str)
 	long long	len;
 
 	len = ft_strlen(float_str);
-	if (double_is_negative(data->float_mod) == 1 || data->plus == 1 || \
+	if (data->double_is_negative == 1 || data->plus == 1 || \
 	data->blank == 1)
 		len++;
 	if (data->width > len)

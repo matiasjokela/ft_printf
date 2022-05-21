@@ -22,6 +22,7 @@ void	print_float(t_data *data, va_list ap)
 	if (data->precision == -1)
 		data->precision = 6;
 	arg = check_length_mod_float(data, ap);
+	data->double_is_negative = double_is_negative(data->float_mod);
 	float_str = get_float_str(data, arg);
 	len = arg_len_float(data, float_str);
 	print = (char *)malloc(sizeof(char) * (len * 2));
@@ -68,24 +69,16 @@ void	get_fractal(long double *n, t_data *data, int *i, char *str)
 
 	j = 0;
 	fract = *n - (long long)*n;
-	if (data->precision > 19)
-		precision = 19;
-	else
-		precision = data->precision;
+	precision = get_true_precision(data);
 	while (j++ < precision)
 		fract *= 10;
-	while (precision < data->precision)
-	{
-		str[*i] = '0';
-		*i -= 1;
-		precision++;
-	}
+	if (precision != data->precision)
+		pad_with_zeros(precision, data, i, str);
 	tmp = (unsigned long long)fract;
 	if (!(fract - tmp == 0.5 && tmp % 2 == 0))
 		fract += 0.5;
 	tmp = (unsigned long long)fract;
-	j--;
-	if (ft_longlen((long long)fract) > j && tmp != 0)
+	if (ft_longlen((long long)fract) > --j && tmp != 0)
 	{
 		tmp = 0;
 		*n += 1;
@@ -112,7 +105,7 @@ void	write_print_float(t_data *data, char *print, int len, int i)
 {
 	if (data->zero == 1)
 	{
-		if (double_is_negative(data->float_mod) == 1)
+		if (data->double_is_negative == 1)
 			print[0] = '-';
 		else if (data->plus == 1)
 			print[0] = '+';
@@ -124,7 +117,7 @@ void	write_print_float(t_data *data, char *print, int len, int i)
 	{
 		while (print[i] == ' ')
 			i++;
-		if (double_is_negative(data->float_mod) == 1)
+		if (data->double_is_negative == 1)
 			print[--i] = '-';
 		else if (data->plus == 1)
 			print[--i] = '+';

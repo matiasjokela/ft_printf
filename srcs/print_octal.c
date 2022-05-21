@@ -74,10 +74,7 @@ void	set_padding_octal(t_data *data, char *print, char *o_str, int len)
 		ft_memset(print, ' ', len * 2);
 	if (!(data->precision == 0 && data->unsigned_mod == 0 && data->width != 0 \
 	&& data->hash == 0))
-	{
 		ft_memcpy(&print[len - i], o_str, i);
-	}
-	//ft_memcpy(&print[len - i], o_str, i);
 	if (data->hash == 1)
 		print[len - i - 1] = '0';
 	if (precision > 0)

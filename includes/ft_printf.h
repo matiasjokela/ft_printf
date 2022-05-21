@@ -46,6 +46,7 @@ typedef struct s_data
 	//modifier values
 	long long			signed_mod;
 	unsigned long long	unsigned_mod;
+	int					double_is_negative;
 	long double			float_mod;
 	//conversion
 	char				conversion;
@@ -103,5 +104,7 @@ int			has_non_blanks(char *print, long long len);
 void		copy_printable(char *dst, char const *src, int len);
 void		print_bits(t_data *data, va_list ap);
 void		read_width(const char *form, int *i, t_data *data, va_list ap);
+int			get_true_precision(t_data *data);
+void		pad_with_zeros(int precision, t_data *data, int *i, char *str);
 
 #endif

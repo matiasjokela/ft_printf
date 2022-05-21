@@ -28,242 +28,368 @@ int main(void)
 	// set finished
 	//ft_printf("%+4.1f\n", 42.0);
 	// ft_printf("%i\n", 1);
+
 int real_return;
 	int my_return = 0;
-	double d;
-	long double ld;
 
 
-	ft_putendl("\n\n * * * * * * * * * * Heavy tests for rounding: * * * * * * * * * *\n");
+	ft_putendl("\n\n * * * * * * * * * * DOUBLE - conversion fF:  * * * * * * * * * *\n");
 
-	// BASICS
-	ft_putendl("\n * * * * * BASICS -10 to 10 * * * * *");
-
-	d = -10.5555545;
-	ft_putendl("\nInput: %f");
-	ft_putendl("Fractional: .5555545\n");
-	while (d < 11)
-	{
-	my_return = ft_printf("My ft_printf: %f $\n", d);
-	real_return = printf("Real  printf: %f $\n", d);
-	ft_putendl("");
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-	d += 1;
-	}
-
-		// BASICS
-	ft_putendl("\n\n * * * * * BASICS 10 to -10 * * * * *");
-
-	d = 10.5555545;
-	ft_putendl("\nInput: %f");
-	ft_putendl("Fractional: .5555545\n");
-	while (d > -11)
-	{
-	my_return = ft_printf("My ft_printf: %f $\n", d);
-	real_return = printf("Real  printf: %f $\n", d);
-	ft_putendl("");
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-	d -= 1;
-	}
-
-	// NINETEEN DIGITS AFTER DESIMAL POINT
-	ft_putendl("\n\n * * * * * Nineteen digits after desimal point (-240 to 240 plus by 24) * * * * *");
-	
-	d = -240.5555555555555555545;
-	ft_putendl("\nInput: %f");
-	ft_putendl("Fractional: .5555555555555555545\n");
-	while (d < 241)
-	{
-	my_return = ft_printf("My ft_printf: %f $\n", d);
-	real_return = printf("Real  printf: %f $\n", d);
-	ft_putendl("");
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-	d += 24;
-	}
-
-	// SAME BACKWORDS
-	ft_putendl("\n\n * * * * * Same backwords * * * * *");
-	
-	d = 240.5555555555555555545;
-	ft_putendl("\nInput: %f");
-	ft_putendl("Fractional: .5555555555555555545\n");
-	while (d > -241)
-	{
-		my_return = ft_printf("My ft_printf: %f $\n", d);
-		real_return = printf("Real  printf: %f $\n", d);
-		ft_putendl("");
-		if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-		d -= 24;
-	}
-
-	// HARD: 15 DIGITS WITH PRECISION OF 17
-	ft_putendl("\n\n * * * * * 15 digits with precision of 17 (4200 to -4200 minus by 420) * * * * *");
-	d = 2400.555555555555545;
-	ft_putendl("\nInput: %.18f");
-	ft_putendl("Fractional: .555555555555545\n");
-	while (d > -2401)
-	{
-		my_return = ft_printf("My ft_printf: %.16f $\n", d);
-		real_return = printf("Real  printf: %.16f $\n", d);
-		ft_putendl("");
-		if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-		d -= 240;
-	}
-
-	// LONG DOUBLE WITH PRECISION OF 17
-	ft_putendl("\n\n * * * * * Long double with precision of 18 * * * * *");
-	ld = -10.5555545l;
-	ft_putendl("\nInput: %.17Lf");
-	ft_putendl("Fractional: .5555545l\n");
-	while (ld < 0)
-	{
-		my_return = ft_printf("My ft_printf: %.18Lf $\n", ld);
-		real_return = printf("Real  printf: %.18Lf $\n", ld);
-		ft_putendl("");
-		if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-		ld += 1;
-	}
-
-	// LONG DOUBLE WITH PRECISION OF 6
-	ft_putendl("\n\n * * * * * Long double with precision of 6 * * * * *");
-	ld = 10.5555545l;
-	ft_putendl("\nInput: %Lf");
-	ft_putendl("Fractional: .5555545l\n");
-	while (ld > 0)
-	{
-		my_return = ft_printf("My ft_printf: %Lf $\n", ld);
-		real_return = printf("Real  printf: %Lf $\n", ld);
-		ft_putendl("");
-		if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-		ld -= 1;
-	}
-
-	// SOME SPECIFIC VALUES
-	ft_putendl("\n\n * * * * * Some specific values * * * * *");
-
-	ft_putendl("\nInput: %Lf");
-	my_return = ft_printf("My ft_printf:  %Lf $\n", 2.44999999999999l);
-	real_return = printf("Real  printf:  %Lf $\n",  2.44999999999999l);
+	ft_putendl("\nInput: %.6f");
+	my_return = ft_printf("My ft_printf: %.6f $\n", 4.71);
+	real_return = printf("Real  printf: %.6f $\n", 4.71);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %.0Lf");
-	my_return = ft_printf("My ft_printf:  %.0Lf $\n", 2.44999999999999l);
-	real_return = printf("Real  printf:  %.0Lf $\n",  2.44999999999999l);
+	ft_putendl("\nInput: %.2f");
+	my_return = ft_printf("My ft_printf: %.2f $\n", 4.666666);
+	real_return = printf("Real  printf: %.2f $\n", 4.666666);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %.1Lf");
-	my_return = ft_printf("My ft_printf:  %.1Lf $\n", 2.44999999999999l);
-	real_return = printf("Real  printf:  %.1Lf $\n",  2.44999999999999l);
+	// FLAGS
+	ft_putendl("\n\n * * * * * Flags:  * * * * *");
+
+	ft_putendl("\nInput: % .3f");
+	my_return = ft_printf("My ft_printf: % .3f $\n", 4.712345);
+	real_return = printf("Real  printf: % .3f $\n", 4.712345);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %#.0Lf");
-	my_return = ft_printf("My ft_printf:  %#.0Lf $\n", 2.4999999999999l);
-	real_return = printf("Real  printf:  %#.0Lf $\n",  2.4999999999999l);
+	ft_putendl("\nInput: %+.6f");
+	my_return = ft_printf("My ft_printf: %+.6f $\n", 4.712345);
+	real_return = printf("Real  printf: %+.6f $\n", 4.712345);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %f");
-	my_return = ft_printf("My ft_printf:  %f $\n", 2.44999999999999);
-	real_return = printf("Real  printf:  %f $\n",  2.44999999999999);
+	ft_putendl("\nInput: %0+25.6f");
+	my_return = ft_printf("My ft_printf: %0+25.6f $\n", 4.71);
+	real_return = printf("Real  printf: %0+25.6f $\n", 4.71);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %.0f");
-	my_return = ft_printf("My ft_printf:  %.0f $\n", 2.44999999999999);
-	real_return = printf("Real  printf:  %.0f $\n",  2.44999999999999);
+	ft_putendl("\nInput: %-+25.6f");
+	my_return = ft_printf("My ft_printf: %-+25.6f $\n", 4.71);
+	real_return = printf("Real  printf: %-+25.6f $\n", 4.71);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %.1f");
-	my_return = ft_printf("My ft_printf:  %.1f $\n", 2.44999999999999);
-	real_return = printf("Real  printf:  %.1f $\n",  2.44999999999999);
+	ft_putendl("\nInput: %-0+25.6f");
+	my_return = ft_printf("My ft_printf: %-0+25.6f $\n", 4.71);
+	real_return = printf("Real  printf: %-0+25.6f $\n", 4.71);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
 	ft_putendl("\nInput: %#.0f");
-	my_return = ft_printf("My ft_printf:  %#.0f $\n", 2.4999999999999);
-	real_return = printf("Real  printf:  %#.0f $\n",  2.4999999999999);
+	my_return = ft_printf("My ft_printf: %#.0f $\n", 4.71);
+	real_return = printf("Real  printf: %#.0f $\n", 4.71);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-		ft_putendl("\nInput: %Lf");
-	my_return = ft_printf("My ft_printf:  %Lf $\n", 2.5000000l);
-	real_return = printf("Real  printf:  %Lf $\n",  2.5000000l);
+	ft_putendl("\nInput: %#-12.0f");
+	my_return = ft_printf("My ft_printf:  %#-12.0f $\n", 4.71);
+	real_return = printf("Real  printf:  %#-12.0f $\n", 4.71);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	// NEGATIVE
+	ft_putendl("\n\n * * * * * Negative:  * * * * *");
+
+	ft_putendl("\nInput: % .3f");
+	my_return = ft_printf("My ft_printf: % .3f $\n", -4.712345);
+	real_return = printf("Real  printf: % .3f $\n", -4.712345);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %+.6f");
+	my_return = ft_printf("My ft_printf: %+.6f $\n", -4.712345);
+	real_return = printf("Real  printf: %+.6f $\n", -4.712345);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %0+25.6f");
+	my_return = ft_printf("My ft_printf: %0+25.6f $\n", -4.71);
+	real_return = printf("Real  printf: %0+25.6f $\n", -4.71);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %-+25.6f");
+	my_return = ft_printf("My ft_printf: %-+25.6f $\n", -4.71);
+	real_return = printf("Real  printf: %-+25.6f $\n", -4.71);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %-0+25.6f");
+	my_return = ft_printf("My ft_printf: %-0+25.6f $\n", -4.71);
+	real_return = printf("Real  printf: %-0+25.6f $\n", -4.71);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %#-12.0f");
+	my_return = ft_printf("My ft_printf:  %#-12.0f $\n", -4.71);
+	real_return = printf("Real  printf:  %#-12.0f $\n", -4.71);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	// ZERO INPUT
+	ft_putendl("\n\n * * * * * Zero input:  * * * * *");
+
+	ft_putendl("\nInput: %f");
+	my_return = ft_printf("My ft_printf: %f $\n", 0.0);
+	real_return = printf("Real  printf: %f $\n", 0.0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %0+25.6f");
+	my_return = ft_printf("My ft_printf: %0+25.6f $\n", 0.0);
+	real_return = printf("Real  printf: %0+25.6f $\n", 0.0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %-+25.6f");
+	my_return = ft_printf("My ft_printf: %-+25.6f $\n", 0.0);
+	real_return = printf("Real  printf: %-+25.6f $\n", 0.0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %-0+25.6f");
+	my_return = ft_printf("My ft_printf: %-0+25.6f $\n", 0.0);
+	real_return = printf("Real  printf: %-0+25.6f $\n", 0.0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %#-12.0f");
+	my_return = ft_printf("My ft_printf:  %#-12.0f $\n", 0.0);
+	real_return = printf("Real  printf:  %#-12.0f $\n", 0.0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %#-12.0f");
+	my_return = ft_printf("My ft_printf:  %#-12.0f $\n", -0.0);
+	real_return = printf("Real  printf:  %#-12.0f $\n", -0.0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %f");
+	my_return = ft_printf("My ft_printf:  %f $\n", -0.0);
+	real_return = printf("Real  printf:  %f $\n", -0.0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %0 f ");
+	my_return = ft_printf("My ft_printf: %0 f $\n", -0.0);
+	real_return = printf("Real  printf: %0 f $\n", -0.0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %+0f ");
+	my_return = ft_printf("My ft_printf: %+0f $\n", -0.0);
+	real_return = printf("Real  printf: %+0f $\n", -0.0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	// ROUNDING
+	ft_putendl("\n\n * * * * * Rounding:  * * * * *");
+
+	ft_putendl("\nInput: %f");
+	my_return = ft_printf("My ft_printf:  %f $\n", 0.1);
+	real_return = printf("Real  printf:  %f $\n", 0.1);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %f");
+	my_return = ft_printf("My ft_printf:  %f $\n", 0.01);
+	real_return = printf("Real  printf:  %f $\n", 0.01);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %.3f");
+	my_return = ft_printf("My ft_printf:  %.3f $\n", 0.0025);
+	real_return = printf("Real  printf:  %.3f $\n", 0.0025);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %.3f");
+	my_return = ft_printf("My ft_printf:  %.3f $\n", 0.0035);
+	real_return = printf("Real  printf:  %.3f $\n", 0.0035);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %.3f");
+	my_return = ft_printf("My ft_printf:  %.3f $\n", 2.0035);
+	real_return = printf("Real  printf:  %.3f $\n", 2.0035);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %f");
+	my_return = ft_printf("My ft_printf:  %f $\n", 0.5);
+	real_return = printf("Real  printf:  %f $\n", 0.5);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %f");
+	my_return = ft_printf("My ft_printf:  %f $\n", 1.5);
+	real_return = printf("Real  printf:  %f $\n", 1.5);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %.f");
+	my_return = ft_printf("My ft_printf:  %.f $\n", 2.5000000);
+	real_return = printf("Real  printf:  %.f $\n", 2.5000000);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %.f");
+	my_return = ft_printf("My ft_printf:  %.f $\n", 1.5000000);
+	real_return = printf("Real  printf:  %.f $\n",  1.5000000);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %f");
+	my_return = ft_printf("My ft_printf:  %f $\n", 9.99999305);
+	real_return = printf("Real  printf:  %f $\n", 9.99999305);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %f");
+	my_return = ft_printf("My ft_printf:  %f $\n", 9.9999985);
+	real_return = printf("Real  printf:  %f $\n", 9.9999985);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %f");
+	my_return = ft_printf("My ft_printf:  %f $\n", 1444565444646.6465424242242);
+	real_return = printf("Real  printf:  %f $\n",  1444565444646.6465424242242);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %f");
+	my_return = ft_printf("My ft_printf:  %f $\n", 2.55555450);
+	real_return = printf("Real  printf:  %f $\n",  2.55555450);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %f");
+	my_return = ft_printf("My ft_printf:  %f $\n", 9.9999995);
+	real_return = printf("Real  printf:  %f $\n", 9.9999995);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %.0f");
+	my_return = ft_printf("My ft_printf:  %.0f $\n", 0.5);
+	real_return = printf("Real  printf:  %.0f $\n", 0.5);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %+0f");
+	my_return = ft_printf("My ft_printf:  %+0f $\n", -0.0);
+	real_return = printf("Real  printf:  %+0f $\n",  -0.0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	// ROUNDING WITH LONG DOUBLE
+	ft_putendl("\n\n * * * * * Rounding with long double:  * * * * *");
+
+	ft_putendl("\nInput: %Lf");
+	my_return = ft_printf("My ft_printf:  %Lf $\n", 9.9999995l);
+	real_return = printf("Real  printf:  %Lf $\n", 9.9999995l);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
 	ft_putendl("\nInput: %Lf");
-	my_return = ft_printf("My ft_printf:  %Lf $\n", 2.500001l);
-	real_return = printf("Real  printf:  %Lf $\n",  2.500001l);
+	my_return = ft_printf("My ft_printf:  %Lf $\n", 1444565444646.6465424242242l);
+	real_return = printf("Real  printf:  %Lf $\n",  1444565444646.6465424242242l);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
 	ft_putendl("\nInput: %Lf");
-	my_return = ft_printf("My ft_printf:  %Lf $\n", 2.5000001l);
-	real_return = printf("Real  printf:  %Lf $\n",  2.5000001l);
+	my_return = ft_printf("My ft_printf:  %Lf $\n", 1444565444646.6465424000l);
+	real_return = printf("Real  printf:  %Lf $\n",  1444565444646.6465424000l);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
 	ft_putendl("\nInput: %Lf");
-	my_return = ft_printf("My ft_printf:  %Lf $\n", 2.50000001l);
-	real_return = printf("Real  printf:  %Lf $\n",  2.50000001l);
+	my_return = ft_printf("My ft_printf:  %Lf $\n", -1444565444646.6465424242242454654l);
+	real_return = printf("Real  printf:  %Lf $\n",  -1444565444646.6465424242242454654l);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
 	ft_putendl("\nInput: %Lf");
-	my_return = ft_printf("My ft_printf:  %Lf $\n", 2.8801045124499999999l);
-	real_return = printf("Real  printf:  %Lf $\n",  2.8801045124499999999l);
+	my_return = ft_printf("My ft_printf:  %Lf $\n", 9.999994500045678l);
+	real_return = printf("Real  printf:  %Lf $\n",  9.999994500045678l);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %Lf");
+	my_return = ft_printf("My ft_printf:  %Lf $\n", 1.5555545l);
+	real_return = printf("Real  printf:  %Lf $\n",  1.5555545l);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+		
+	ft_putendl("\nInput: %Lf");
+	my_return = ft_printf("My ft_printf:  %Lf $\n", 2.5555545l);
+	real_return = printf("Real  printf:  %Lf $\n",  2.5555545l);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 	
-	// SOME BIG VALUES WITH BIG PRECISION
-	ft_putendl("\n\n * * * * * Some big values with big precision * * * * *");
-
-	ft_putendl("\nInput: %.16Lf");
-	my_return = ft_printf("My ft_printf:  %.16Lf $\n", 2147483647.8801045124499999999l);
-	real_return = printf("Real  printf:  %.16Lf $\n",  2147483647.8801045124499999999l);
+	ft_putendl("\nInput: %.0Lf");
+	my_return = ft_printf("My ft_printf:  %.0Lf $\n", -0.5l);
+	real_return = printf("Real  printf:  %.0Lf $\n", -0.5l);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %.16Lf");
-	my_return = ft_printf("My ft_printf:  %.16Lf $\n", -2147483647.8801045124499999999l);
-	real_return = printf("Real  printf:  %.16Lf $\n",  -2147483647.8801045124499999999l);
+	ft_putendl("\nInput: %Lf");
+	my_return = ft_printf("My ft_printf:  %Lf $\n", 18446744073709551615.42l);
+	real_return = printf("Real  printf:  %Lf $\n",  18446744073709551615.42l);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %.16Lf");
-	my_return = ft_printf("My ft_printf:  %.16Lf $\n", 52147483647.8801045124499999999l);
-	real_return = printf("Real  printf:  %.16Lf $\n",  52147483647.8801045124499999999l);
+
+	ft_putendl("\nInput: %.35Lf");
+	my_return = ft_printf("My ft_printf:  %.35Lf $\n", 42.123456789012345678901234567890l);
+	real_return = printf("Real  printf:  %.35Lf $\n",  42.123456789012345678901234567890l);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %.16f");
-	my_return = ft_printf("My ft_printf:  %.16f $\n", 2147477647.88990499999999);
-	real_return = printf("Real  printf:  %.16f $\n",  2147477647.88990499999999);
+	ft_putendl("\nInput: %.35Lf");
+	my_return = ft_printf("My ft_printf:  %.17Lf $\n", 42.123456789012345678901234567890l);
+	real_return = printf("Real  printf:  %.17Lf $\n",  42.123456789012345678901234567890l);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %.16f");
-	my_return = ft_printf("My ft_printf:  %.16f $\n", 2147477647.880125512449999);
-	real_return = printf("Real  printf:  %.16f $\n",  2147477647.880125512449999);
+	// SOME EXTRAS
+	ft_putendl("\n\n * * * * * Some extra tests for hard cases:  * * * * *");
+
+	ft_putendl("\nInput: %.2f ");
+	my_return = ft_printf("My ft_printf: %.2f $\n", -958.125000);
+	real_return = printf("Real  printf: %.2f $\n", -958.125000);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %.16f");
-	my_return = ft_printf("My ft_printf:  %.16f $\n", 52147477647.8802445124499999999);
-	real_return = printf("Real  printf:  %.16f $\n",  52147477647.8802445124499999999);
+	ft_putendl("\nInput: %0#10.1f ");
+	my_return = ft_printf("My ft_printf: %0#10.1f $\n", 0.250000);
+	real_return = printf("Real  printf: %0#10.1f $\n", 0.250000);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %0#10.1f ");
+	my_return = ft_printf("My ft_printf: %0#10.1f $\n", 0.150000);
+	real_return = printf("Real  printf: %0#10.1f $\n", 0.150000);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %0#10.1f ");
+	my_return = ft_printf("My ft_printf: %f $\n", 2.5555545);
+	real_return = printf("Real  printf: %f $\n", 2.5555545);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %.3f ");
+	my_return = ft_printf("My ft_printf: %.3f $\n", 0.000500);
+	real_return = printf("Real  printf: %.3f $\n", 0.000500);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
 
 
 }
