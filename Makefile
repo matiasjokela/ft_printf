@@ -28,7 +28,7 @@ all: $(NAME)
 $(NAME):
 	@cd ./libft/ && $(MAKE) && cd ..;
 	@cp ./libft/libft.a ./$(NAME);
-	@gcc -c -Wall -Werror -Wextra -g -fsanitize=address $(HEADER) $(SRCS);
+	@gcc -c -Wall -Werror -Wextra $(HEADER) $(SRCS);
 	@ar rc $(NAME) $(O_FILES);
 	@mv $(O_FILES) $(SRC_DIR)
 	@ranlib $(NAME);

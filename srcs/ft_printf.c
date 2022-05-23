@@ -90,7 +90,7 @@ void	write_print(t_data *data, char *print, int len, int i)
 	}
 	else
 	{
-		while (print[i] == ' ')
+		while (print[i] == ' ' && i < (len * 2) - 1)
 			i++;
 		if (data->signed_mod < 0)
 			print[--i] = '-';

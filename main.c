@@ -22,8 +22,9 @@ int main(void)
 	ft_printf("$ %stest%s $\n", BLUE, RESET);
 */
 
-	// ft_printf("%#2.x\n", 5);    // still an error
-	ft_printf("%#.1u\n", 5);
+	ft_printf("{%#.5x}\n", 1);
+	ft_printf("{%#2.x}\n", 5);
+	//ft_printf("%#.1u\n", 5);
 
 
 
