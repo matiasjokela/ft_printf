@@ -51,12 +51,15 @@ char	*ft_dtoa(long double n, t_data *data)
 	else
 	{
 		if (!(n - (long double)tmp == 0.5 && tmp % 2 == 0))
+		{
+			if (tmp % 10 == 9)
+				i++;
 			n += 0.5;
+		}
 		if (data->hash == 1)
 			str[i--] = '.';
 	}
-	tmp = (unsigned long long)n;
-	fill_str(tmp, &i, 0, str);
+	fill_str((unsigned long long)n, &i, 0, str);
 	return (str);
 }
 

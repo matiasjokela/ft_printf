@@ -22,9 +22,12 @@ int main(void)
 	ft_printf("$ %stest%s $\n", BLUE, RESET);
 */
 
-	ft_printf("{%#.5x}\n", 1);
-	ft_printf("{%#2.x}\n", 5);
-	//ft_printf("%#.1u\n", 5);
+	ft_printf("{%4.f}\n", 9.5);
+	printf("{%4.f}\n", 9.5);
+
+
+	ft_printf("{%+ld}\n", 9223372036854775807);
+	printf("{%+ld}\n", 9223372036854775807);
 
 
 
