@@ -78,7 +78,7 @@ long long	arg_len_int(t_data *data, long long arg)
 		len = data->precision;
 	if (len == data->precision && arg < 0)
 		len++;
-	if ((data->blank == 1 || data->plus == 1) && (len == ft_intlen(arg) \
+	if ((data->blank == 1 || data->plus == 1) && (len == ft_longlen(arg) \
 	|| len == data->precision) && \
 	!(arg == 0 && data->precision == 0 && data->width == 1))
 		len++;

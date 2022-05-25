@@ -22,8 +22,7 @@ int main(void)
 	ft_printf("$ %stest%s $\n", BLUE, RESET);
 */
 
-	ft_printf("{%4.f}\n", 9.5);
-	printf("{%4.f}\n", 9.5);
+
 
 
 	ft_printf("{%+ld}\n", 9223372036854775807);
