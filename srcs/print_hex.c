@@ -80,8 +80,6 @@ long long	arg_len_hex(t_data *data, long long arg, char *oct_str)
 		len += 2;
 	if (data->width > len)
 		len = data->width;
-	/*if (data->hash == 1 && (len == strl || len == data->precision) && arg != 0)
-			len += 2;*/
 	data->total_len += len;
 	return (len);
 }
