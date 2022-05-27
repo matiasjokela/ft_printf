@@ -17,7 +17,12 @@
 int main(void)
 {
 
-	ft_printf("$%f$\n", 0.0 / 0.0);
+	ft_printf("|%+012.0d|\n", 0);
+	printf("|%+012.0d|\n", 0);
+	ft_printf("|%-01.21d|\n", 0);
+	printf("|%-01.21d|\n", 0);
+	ft_printf("|%+02.5d|\n", 0);
+	printf("|%+02.5d|\n", 0);
 
 
 
