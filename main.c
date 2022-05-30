@@ -16,9 +16,10 @@
 
 int main(void)
 {
+	printf("%012.f\n", 9.4f);
+	ft_printf("%012.f\n", 9.4f);
 
-	ft_printf("|%+012.0d|\n", 0);
-	printf("|%+012.0d|\n", 0);
+	
 
 
 

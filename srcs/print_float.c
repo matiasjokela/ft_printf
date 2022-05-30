@@ -78,14 +78,15 @@ void	get_fractal(long double *n, t_data *data, int *i, char *str)
 	if (precision != data->precision)
 		pad_with_zeros(precision, data, i, str);
 	tmp = (unsigned long long)fract;
-	if (!(fract - tmp == 0.5 && tmp % 2 == 0))
+	if (!(fract - tmp <= 0.5 && tmp % 2 == 0))
 		fract += 0.5;
 	tmp = (unsigned long long)fract;
 	if (ft_longlen((long long)fract) > --j && tmp != 0)
 	{
 		tmp = 0;
+		if (ft_longlen((unsigned long long)*n) < ft_longlen((unsigned long long)(*n + 1)))
+			*i += 1;
 		*n += 1;
-		*i += 1;
 	}
 	fill_str(tmp, i, j, str);
 	str[*i] = '.';
