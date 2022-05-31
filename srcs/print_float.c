@@ -52,7 +52,7 @@ char	*ft_dtoa(long double n, t_data *data)
 	{
 		if (!(n - (long double)tmp == 0.5 && tmp % 2 == 0))
 		{
-			if (ft_longlen((unsigned long long)n) < ft_longlen((unsigned long long)(n + 0.5)))
+			if (ft_longlen((long long)n) < ft_longlen((long long)(n + 0.5)))
 				i++;
 			n += 0.5;
 		}
@@ -68,15 +68,14 @@ void	get_fractal(long double *n, t_data *data, int *i, char *str)
 	int					j;
 	long double			fract;
 	unsigned long long	tmp;
-	int					precision;
 
 	j = 0;
 	fract = *n - (long long)*n;
-	precision = get_true_precision(data);
-	while (j++ < precision)
+	data->true_precision = get_true_precision(data);
+	while (j++ < data->true_precision)
 		fract *= 10;
-	if (precision != data->precision)
-		pad_with_zeros(precision, data, i, str);
+	if (data->true_precision != data->precision)
+		pad_with_zeros(data->true_precision, data, i, str);
 	tmp = (unsigned long long)fract;
 	if (!(fract - tmp <= 0.5 && tmp % 2 == 0))
 		fract += 0.5;
@@ -84,7 +83,7 @@ void	get_fractal(long double *n, t_data *data, int *i, char *str)
 	if (ft_longlen((long long)fract) > --j && tmp != 0)
 	{
 		tmp = 0;
-		if (ft_longlen((unsigned long long)*n) < ft_longlen((unsigned long long)(*n + 1)))
+		if (ft_longlen((long long)*n) < ft_longlen((long long)(*n + 1)))
 			*i += 1;
 		*n += 1;
 	}

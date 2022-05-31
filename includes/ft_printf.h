@@ -37,6 +37,7 @@ typedef struct s_data
 	//width and precision
 	int					width;
 	int					precision;
+	int					true_precision;
 	//modifiers
 	int					mod_h;
 	int					mod_hh;

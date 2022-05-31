@@ -30,15 +30,8 @@ void	print_int(t_data *data, va_list ap)
 	set_padding(data, print, num_str, len);
 	if (has_non_blanks(print, len) == 0)
 	{
-		if (data->minus == 0 && arg == 0 && data->plus == 1)
-		{
-			print[len - 1] = '+';
-			write(1, print, len);
-			free(num_str);
-			free(print);
-			return ;
-		}
-		data->zero = 1;
+		print[len] = 'k';
+		data->minus = 0;
 	}		
 	write_print(data, print, len, 0);
 	free(num_str);
