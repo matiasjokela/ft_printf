@@ -52,7 +52,7 @@ char	*ft_dtoa(long double n, t_data *data)
 	{
 		if (!(n - (long double)tmp == 0.5 && tmp % 2 == 0))
 		{
-			if (tmp % 10 == 9)
+			if (ft_longlen((unsigned long long)n) < ft_longlen((unsigned long long)(n + 0.5)))
 				i++;
 			n += 0.5;
 		}
